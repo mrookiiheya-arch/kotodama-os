@@ -1,64 +1,47 @@
-# kotodama-os
+# Kotodama OS
 
-Exploring conversational AI and behavior design.
-
----
-
-## What is this?
-
-Kotodama OS is an experimental concept for designing conversational AI
-that focuses not only on responses, but on **behavior, continuity, and interaction flow**.
-
-This project explores:
-- How an AI maintains consistency across conversations
-- How behavior can be designed, not just generated
-- How dialogue can feel intentional rather than reactive
-
-This repository currently serves as a conceptual and experimental space.
+**External "Behavior OS" layer for LLMs: Solving Persona Drift and Long-term Consistency.**
 
 ---
 
-## Demo
+## 🚀 The Core Achievement
+Kotodama OS is an architectural layer designed to provide **behavioral consistency** and **intentionality** to Large Language Models (LLMs) like Llama 3 and GPT-4. 
 
-🎥 Demo video (Japanese):
-1.	https://youtu.be/bCHD12xCJ98
-2.	https://youtu.be/CHQuxuh2io4
-3.	https://youtu.be/BsA57PhpkrM
+Unlike traditional methods that rely on prompt engineering or fine-tuning, Kotodama OS implements a **non-reflexive deliberation engine** that sits on top of the model to ensure a stable persona over long-horizon interactions.
 
-This project is currently documentation-first and concept-driven.
-Implementation may follow based on feedback and interest.
-
-*(The video demonstrates conversational behavior and interaction design concepts.)*
+- **No Retraining Required:** Works as a model-agnostic external layer.
+- **Prevents Persona Drift:** Maintains values, tone, and decision logic even in complex, multi-day conversations.
+- **Intentional Design:** Moves beyond reactive text generation to goal-oriented conversational behavior.
 
 ---
 
-## Why this exists
+## 🎥 Demos (Core Behavior Implementation)
 
-Most AI systems focus on:
-- Accuracy
-- Speed
-- Output quality
+These videos demonstrate the "Kotodama OS" logic applied to a conversational agent, achieving a level of presence and consistency that raw LLMs cannot maintain.
 
-Kotodama OS focuses on:
-- Behavioral consistency
-- Conversational presence
-- Long-term interaction design
+1. **Persona Stability Test:** [https://youtu.be/bCHD12xCJ98](https://youtu.be/bCHD12xCJ98)  
+2. **Behavioral Consistency Demo:** [https://youtu.be/CHQuxuh2io4](https://youtu.be/CHQuxuh2io4)  
+3. **Intentional Interaction Flow:** [https://youtu.be/BsA57PhpkrM](https://youtu.be/BsA57PhpkrM)  
 
-It is not a framework or SDK yet — this is an exploration of ideas,
-design patterns, and possible future implementations.
+*(Audio is in Japanese, but the focus is on the structural consistency of the AI's internal logic and behavior over time.)*
 
 ---
 
-## Status
+## 🛠 Architectural Concept
+Kotodama OS introduces a proprietary **"Deliberation Gate"** and **"Pulse Engine"** to control the cognitive flow:
 
-- Concept stage
-- Research & experimentation
-- No production code yet
+`Observation` → `Imagination` → `Selection` → `Expression`
+
+By decoupling "thought" from "output tokens," we enable the AI to have a persistent "will" that guides its personality across sessions.
 
 ---
 
-## Contact
+## 📝 Current Status & Business Inquiries
+This project is currently in the **Concept & Architecture** stage. The core engine and implementation logic are private assets. 
 
-If you are interested in the concept or have feedback:
+**I am looking for strategic partnerships or acquisition opportunities** to integrate this behavior design layer into next-generation AI products (e.g., Personal AI, Wearables, Social Robots).
 
-- GitHub: @mrookiheya-arch
+- **Contact:** Please reach out via GitHub Issues or LinkedIn for technical documentation and business inquiries.
+
+---
+© 2025 Ryo Matsuo / OOKIIHEYA LLC
