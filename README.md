@@ -29,8 +29,6 @@ https://youtu.be/CHQuxuh2io4
 **Demo #03 — Structured Reasoning Inside Natural Conversation (Work / Planning / Decision-Making)**  
 https://youtu.be/BsA57PhpkrM
 
-*(Audio is in Japanese. The focus is on structural consistency of behavior and interaction flow over time.)*
-
 ---
 
 ## 🧠 Architectural Concept
