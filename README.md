@@ -119,6 +119,8 @@ Ryo Matsuo / OOKIIHEYA LLC
 
 Tokyo, Japan  
 
-Contact: GitHub Issues or LinkedIn  
+Contact:
+- GitHub Issues
+- LinkedIn: https://www.linkedin.com/in/ryo-matsuo-2205a9374
 
 © 2025 Ryo Matsuo / OOKIIHEYA LLC
