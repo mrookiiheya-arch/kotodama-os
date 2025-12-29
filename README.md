@@ -10,9 +10,16 @@ Kotodama OS is an architectural layer designed to provide **behavioral consisten
 Unlike traditional approaches that rely on prompt engineering or fine-tuning,  
 Kotodama OS introduces a **non-reflexive deliberation layer** that operates externally to the model, enabling stable behavior across long-term interactions.
 
-- **No Retraining Required:** Works as a model-agnostic external layer  
-- **Reduces Persona Drift:** Maintains values, tone, and decision tendencies across extended conversations  
-- **Intentional Design:** Moves beyond reactive text generation toward structured conversational behavior  
+- **No Retraining Required:**  
+  Kotodama OS does not modify the underlying model weights or internal architecture of the LLM.  
+  Instead of retraining or fine-tuning, it operates as an external control layer  
+  that governs behavioral consistency and interaction flow outside the model itself.
+
+- **Reduces Persona Drift:**  
+  Maintains values, tone, and decision tendencies across extended conversations  
+
+- **Intentional Design:**  
+  Moves beyond reactive text generation toward structured conversational behavior  
 
 ---
 
