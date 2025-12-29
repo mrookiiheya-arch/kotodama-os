@@ -46,6 +46,20 @@ This allows the AI to preserve interaction style and decision tendencies across 
 
 ---
 
+## When Persona Drift Becomes a Product Risk
+
+Persona drift rarely appears as a clear failure.
+
+Instead, teams begin to notice subtle changes:
+- The model agrees more often, but with weaker intent
+- Decisions feel safer, yet less trustworthy
+- Tone remains consistent, but users hesitate to rely on it
+- The AI still “works” — but no longer feels accountable
+
+At this stage, retraining or prompt tuning often fails to restore confidence.
+
+---
+
 ## 🧩 Kotodama OS × Meta — Business Value
 
 Kotodama OS functions as a foundational layer supporting **intimacy, stability, and continuity** in next-generation AI experiences.
