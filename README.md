@@ -88,7 +88,24 @@ Kotodama OS introduces a proprietary **Deliberation Gate** and **Pulse Engine** 
 
 By decoupling deliberation from output generation, the system aims to avoid purely reflexive responses and preserve continuity of behavior.
 
-This is intended to help an AI preserve interaction style and decision tendencies across sessions **without modifying model weights**.
+To clarify how the OS wraps the base model, the internal processing flow can be represented as follows:
+
+
+**Base LLM (e.g. GPT/Llama)**  
+(raw generation)  
+↓  
+**Deliberation Gate**  
+(pre-response control & stance selection)  
+↓  
+**Pulse Engine**  
+(behavior continuity & persona scaffolding)  
+↓  
+**Final Output**  
+(delivered to the user)
+
+
+This architecture is intended to help an AI preserve interaction style and decision tendencies across sessions **without modifying model weights**.
+
 
 ---
 
