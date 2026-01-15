@@ -45,6 +45,41 @@ These videos demonstrate the Kotodama OS concept applied to a conversational age
 
 ---
 
+## 🗺 Conceptual Map — Where Kotodama OS Sits
+
+Kotodama OS is not a model, not a prompt framework, and not an application layer.
+
+The following map illustrates the conceptual position of Kotodama OS within the current AI system landscape.
+
+It is positioned as an **external behavior OS layer** that operates between base LLM capabilities and application-specific implementations.
+
+Conceptually, the landscape can be understood as follows:
+
+
+**Base AI Capabilities (Foundation Models)**  
+(GPT, Gemini, Llama)  
+↓  
+**Platform & Distribution Layer**  
+(Meta platforms, Apple Intelligence)  
+↓  
+**Vacant Seat — Unoccupied Domain**  
+(Requires: long-term behavioral consistency, interaction distance, personality continuity)
+
+→ **Filled by: Kotodama OS (External Behavior OS Layer)**  
+(Provides: deliberation, intent alignment, interaction-distance control)
+
+↓  
+**Application Layer**  
+(Companion AI, messaging agents, wearable AI, social / relational systems)
+
+
+This map highlights a domain that is not fully addressed by current approaches focused on model scaling, multimodality, or task optimization.
+
+Kotodama OS fills this vacant seat by adding a behavioral layer that applications can rely on, without touching or retraining the base models.
+
+
+---
+
 ## 🧠 Architectural Concept
 
 Kotodama OS introduces a proprietary **Deliberation Gate** and **Pulse Engine** to control cognitive flow:
