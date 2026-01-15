@@ -1,7 +1,7 @@
 # Kotodama OS
 External "Behavior OS" Layer for LLMs — Addressing Persona Drift and Long-term Consistency
 
-**Update (2026-01-14):** Refined wording to clarify scope boundaries (design goals vs. verified outcomes) while keeping the core thesis unchanged.
+**Update (2026-01-15):** Refined wording to clarify scope boundaries (design goals vs. verified outcomes) while keeping the core thesis unchanged.
 
 ---
 
