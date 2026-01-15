@@ -215,5 +215,6 @@ Ryo Matsuo / OOKIIHEYA LLC
 Tokyo, Japan
 
 Contact:  
-- GitHub Issues  
+- GitHub Issues
+- Mail: mr@ookiiheya.com
 - LinkedIn: https://www.linkedin.com/in/ryo-matsuo
