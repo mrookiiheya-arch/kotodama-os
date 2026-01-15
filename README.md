@@ -181,4 +181,4 @@ Tokyo, Japan
 
 Contact:  
 - GitHub Issues  
-- LinkedIn: https://www.linkedin.com/in/ryo-matsuo-2205a9374
+- LinkedIn: https://www.linkedin.com/in/ryo-matsuo
