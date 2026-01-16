@@ -1,9 +1,10 @@
 # Kotodama OS
 External "Behavior OS" Layer for LLMs — Addressing Persona Drift and Long-term Consistency
 
-**Update (2026-01-15):** Refined wording to clarify scope boundaries (design goals vs. verified outcomes) while keeping the core thesis unchanged.
+**Update (2026-01-16):** Refined wording to clarify scope boundaries (design goals vs. verified outcomes) while keeping the core thesis unchanged.
 
 ---
+Today’s LLMs deliver strong task performance, but behavioral consistency, interaction distance, and persona continuity remain underdeveloped areas.
 
 ## 🚀 The Core Achievement
 
@@ -19,6 +20,8 @@ Instead of retraining or fine-tuning, it operates as an **external control layer
 - behavioral consistency  
 - interaction flow  
 - response temperature (distance / tone)
+
+These aspects are difficult to reliably achieve through prompting, system instructions, or fine-tuning alone, which often optimize for single-session behavior rather than longitudinal consistency.
 
 ### Reduces Persona Drift (Design Goal)
 
@@ -72,6 +75,7 @@ Conceptually, the landscape can be understood as follows:
 **Application Layer**  
 (Companion AI, messaging agents, wearable AI, social / relational systems)
 
+Potential application domains include companion-grade AI, wearable or continuous interaction devices, messaging agents, and socially-aware systems.
 
 This map highlights a domain that is not fully addressed by current approaches focused on model scaling, multimodality, or task optimization.
 
@@ -218,6 +222,7 @@ We are currently open to:
 ## Notes on Base-Model Dependency (External Layer)
 
 Kotodama OS is an external layer and does not modify the base LLM’s weights or internal architecture.  
+Integration does not require model retraining or infrastructure changes; Kotodama OS operates as an external layer on top of any base model that exposes a standard text-generation interface.
 As a result, the upper bound of **knowledge, reasoning depth, and raw generation quality** depends on the underlying model.
 
 At the same time, Kotodama OS targets **behavioral consistency, interaction temperature, and conversational flow control**.  
