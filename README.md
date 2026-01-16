@@ -1,12 +1,12 @@
 # Kotodama OS
 External "Behavior OS" Layer for LLMs — Addressing Persona Drift and Long-term Consistency
 
-**Update (2026-01-16):** Refined wording to clarify scope boundaries (design goals vs. verified outcomes) while keeping the core thesis unchanged.
+**Update (2026-01-17):** Refined wording to clarify scope boundaries (design goals vs. verified outcomes) while keeping the core thesis unchanged.
 
 ---
 Today’s LLMs deliver strong task performance, but behavioral consistency, interaction distance, and persona continuity remain underdeveloped areas.
 
-## 🚀 The Core Achievement
+## The Core Achievement
 
 Kotodama OS is an architectural layer designed to provide **behavioral consistency** and **intentional interaction control** for Large Language Models (LLMs).
 
@@ -33,7 +33,7 @@ Moves beyond reactive text generation toward **structured conversational behavio
 
 ---
 
-## 🎥 Demos (Core Behavior Implementation)
+## Demos (Core Behavior Implementation)
 
 These videos demonstrate the Kotodama OS concept applied to a conversational agent, focusing on **behavioral stability rather than raw model capability**.
 
@@ -48,7 +48,28 @@ These videos demonstrate the Kotodama OS concept applied to a conversational age
 
 ---
 
-## 🗺 Conceptual Map — Where Kotodama OS Sits
+## Missing Layer in Today’s AI Stack
+
+Modern LLM-based systems typically define two architectural layers:
+
+1. **Model Layer** — foundation models responsible for raw knowledge and generation.
+2. **Agent Layer** — tools, planning, and delegation frameworks that operate on top.
+
+However, a third layer remains undefined:
+
+3. **Behavior Layer** — responsible for persona continuity, interaction-distance regulation, and long-term relational consistency.
+
+This layer is not addressed by prompting, fine-tuning, RLHF, or agent frameworks. These approaches optimize for single-session performance, not longitudinal behavioral stability.
+
+Kotodama OS proposes a formal specification for this missing Behavior Layer.
+
+The following section illustrates where this Behavior Layer sits within the current AI stack.
+
+---
+
+## Conceptual Map — Where Kotodama OS Sits
+
+Kotodama OS implements the missing Behavior Layer as an external OS layer.
 
 Kotodama OS is not a model, not a prompt framework, and not an application layer.
 
@@ -63,7 +84,7 @@ Conceptually, the landscape can be understood as follows:
 (GPT, Gemini, Llama)  
 ↓  
 **Platform & Distribution Layer**  
-(Meta platforms, Apple Intelligence)  
+(Meta platforms, Apple Intelligence — integration & distribution)
 ↓  
 **Vacant Seat — Unoccupied Domain**  
 (Requires: long-term behavioral consistency, interaction distance, personality continuity)
@@ -84,7 +105,7 @@ Kotodama OS fills this vacant seat by adding a behavioral layer that application
 
 ---
 
-## 🧠 Architectural Concept
+## Architectural Concept
 
 Kotodama OS introduces a proprietary **Deliberation Gate** and **Pulse Engine** to control cognitive flow:
 
@@ -127,7 +148,7 @@ At this stage, retraining or prompt tuning often struggles to restore confidence
 
 ---
 
-## 🧩 Kotodama OS × Meta — Business Value (Hypothesis)
+## Kotodama OS × Meta — Business Value (Hypothesis)
 
 Kotodama OS is positioned as a foundational layer supporting **intimacy, stability, and continuity** in next-generation AI experiences.
 
@@ -197,7 +218,7 @@ This direction resembles an **extension of the communication infrastructure laye
 
 ---
 
-## 📌 Current Status & Business Inquiries
+## Current Status & Business Inquiries
 
 This project is currently in the **Concept & Architecture** stage.
 
@@ -230,7 +251,7 @@ As base LLMs improve, the external layer can benefit from those improvements **w
 
 ---
 
-## 👤 Author & Contact
+## Author & Contact
 
 **Creator & System Architect**  
 Ryo Matsuo / OOKIIHEYA LLC  
