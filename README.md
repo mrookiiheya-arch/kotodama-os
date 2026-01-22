@@ -1,7 +1,7 @@
 # Kotodama OS
 External "Behavior OS" Layer for LLMs — Addressing Persona Drift and Long-term Consistency
 
-**Update (2026-01-17):** Refined wording to clarify scope boundaries (design goals vs. verified outcomes) while keeping the core thesis unchanged.
+**Update (2026-01-22):** Refined wording to clarify scope boundaries (design goals vs. verified outcomes) while keeping the core thesis unchanged.
 
 ---
 Today’s LLMs deliver strong task performance, but behavioral consistency, interaction distance, and persona continuity remain underdeveloped areas.
@@ -102,6 +102,23 @@ This map highlights a domain that is not fully addressed by current approaches f
 
 Kotodama OS fills this vacant seat by adding a behavioral layer that applications can rely on, without touching or retraining the base models.
 
+---
+
+## Internal Working Models & Behavior Continuity (Design Rationale)
+
+Kotodama OS treats conversational behavior as a function of internal working models, rather than as a byproduct of reactive text generation.
+
+In social cognition research, internal working models describe persistent patterns that guide how agents interpret intent, regulate interpersonal distance, and maintain continuity across interactions.
+In contrast, most contemporary LLM deployments lack mechanisms to preserve or evolve such models over time, resulting in behavioral instability during long-term use — a phenomenon commonly observed as persona drift.
+
+Kotodama OS introduces a persistent behavior-scaffolding layer that allows an AI system to maintain continuity of stance, interaction distance, and intent interpretation across sessions, without modifying the base model’s weights or internal architecture.
+
+This approach does not aim to implement psychological theories directly.
+Nor does it model individual users’ mental states.
+
+Instead, it applies a systems-level abstraction inspired by social cognition to address a practical product gap: ensuring behavioral reliability and interaction consistency in long-term, relationship-oriented AI systems.
+
+By separating deliberation and behavioral continuity from raw generation, Kotodama OS enables AI systems to move beyond reflexive responses and toward intentional, accountable interaction — a requirement for companion-grade and socially embedded AI experiences.
 
 ---
 
