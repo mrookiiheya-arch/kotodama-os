@@ -1,7 +1,7 @@
 # Kotodama OS
 External "Behavior OS" Layer for LLMs — Addressing Persona Drift and Long-term Consistency
 
-**Update (2026-01-28):** Refined wording to clarify scope boundaries (design goals vs. verified outcomes) while keeping the core thesis unchanged.
+**Update (2026-01-31):** Refined wording to clarify scope boundaries (design goals vs. verified outcomes) while keeping the core thesis unchanged.
 
 ---
 Today’s LLMs deliver strong task performance, but behavioral consistency, interaction distance, and persona continuity remain underdeveloped areas.
@@ -269,40 +269,19 @@ Given this external-layer design, considerations around safety, responsibility, 
 
 ---
 
-## Safety and Responsibility Considerations (Design Perspective)
+## Safety and Design Intent
 
-Kotodama OS is conceptualized as an external behavior layer, with the design assumption that it operates without modifying or retraining the underlying LLM, and without interacting with the model’s internal parameters, latent states, or native safety mechanisms.
+Kotodama OS is designed as an external behavior layer that operates without modifying or retraining the underlying LLM.
+By design, it assumes no direct interaction with model parameters, latent states, or native safety mechanisms.
 
-Content generation, policy enforcement, and safety filtering are expected to remain the responsibility of the underlying LLM and its existing safety framework.  
-Kotodama OS is proposed as a layer that does not aim to override, bypass, or replace these mechanisms.
+Content generation and safety control remain the responsibility of the base model and its existing alignment framework.
+Kotodama OS is not intended to override or bypass these mechanisms.
 
-From a design perspective, the role of Kotodama OS is intended to focus on structuring interaction flow, supporting behavioral continuity, and regulating interaction distance prior to response generation.  
-It is not positioned as a mechanism for introducing new model capabilities or expanding what the base model is allowed to produce.
+The purpose of this layer is to structure interaction flow, maintain behavioral continuity, and regulate interaction distance prior to response generation.
+It does not aim to introduce new model capabilities or expand the range of content the base model can produce.
 
-Kotodama OS is not proposed as an autonomous agent framework, nor as a system with persistent internal goals or self-directed decision loops.  
-Concepts such as **“persona,” “intent,” or “stance”** are treated as external design abstractions rather than as internal psychological states.
-
-From a safety and responsibility standpoint, this architectural approach is intended to preserve clear boundaries of control and accountability:
-
-- Output safety is expected to remain governed by the base model’s alignment and policy systems  
-- Kotodama OS is not positioned to independently generate or suppress content  
-- No irreversible state is assumed to be written into the model or retained across sessions at the model level  
-
-These statements reflect current design intentions and assumptions rather than verified guarantees, and are subject to validation through future PoCs and collaborative development.
-
----
-
-## Relationship Between Base Model Progress and the Behavior Layer
-
-Because Kotodama OS operates as an external Behavior Layer and does not modify or retrain the underlying LLM, its practical effectiveness remains dependent on the capabilities of the base model.
-
-The upper bounds of **reasoning depth, knowledge coverage, and raw generation quality** are determined by the underlying LLM.  
-Kotodama OS does not alter these limits.
-
-At the same time, as base models improve in areas such as reasoning, contextual understanding, and expressive capability, these improvements are expected to be reflected at the behavioral level as well.  
-In such cases, the Behavior Layer can leverage enhanced model capabilities to support more stable interaction flow, clearer intent alignment, and more consistent interaction distance, without changes to the base model or retraining of the behavioral framework.
-
-In this sense, Kotodama OS is not positioned as competing with model progress, but as aligning with it — translating advancements at the Model Layer into more reliable long-term conversational behavior at the Behavior Layer, while preserving clear architectural boundaries.
+Because Kotodama OS functions as an external layer, its effectiveness depends on the capabilities of the underlying model.
+As base models improve, the Behavior Layer is designed to leverage those advancements to support more stable long-term interaction, without requiring changes to the model itself.
 
 ---
 
