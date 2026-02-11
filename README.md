@@ -1,7 +1,7 @@
 # Kotodama OS
 External "Behavior OS" Layer for LLMs — Addressing Persona Drift and Long-term Consistency
 
-**Update (2026-01-31):** Refined wording to clarify scope boundaries (design goals vs. verified outcomes) while keeping the core thesis unchanged.
+**Update (2026-02-11):** Refined wording to clarify scope boundaries (design goals vs. verified outcomes) while keeping the core thesis unchanged.
 
 ---
 Today’s LLMs deliver strong task performance, but behavioral consistency, interaction distance, and persona continuity remain underdeveloped areas.
@@ -148,6 +148,44 @@ To clarify how the OS wraps the base model, the internal processing flow can be 
 
 This architecture is intended to help an AI preserve interaction style and decision tendencies across sessions **without modifying model weights**.
 
+---
+
+## Prototype Status and Observed Structural Behavior (Non-Production)
+
+Kotodama OS currently exists as an individual-level functional prototype implemented as an external **Behavior Layer** on top of a base LLM.
+
+This prototype is **not presented as a production-ready system**, nor as a claim of performance superiority.  
+Its purpose is to test whether a distinct behavior-scaffolding layer can be instantiated and maintained across extended, multi-session interactions without modifying base model weights.
+
+The prototype has been exercised across repeated structured interaction sessions intentionally designed to stress:
+
+- long-term continuity  
+- stance consistency  
+- conversational pressure dynamics  
+
+In these controlled interaction environments, the following recurring structural tendencies have been **qualitatively observed**:
+
+- **Session-to-session stance continuity** (qualitative)  
+- **Context-dependent regulation of interaction distance** (qualitative)  
+- **Reduced reflexive agreement under pressure** (qualitative)  
+- **Re-alignment behavior after conversational drift** (qualitative)  
+
+These observations should be interpreted as **qualitative indications of structural feasibility**, not as benchmarked performance claims.
+
+Kotodama OS is not positioned as a finished product at this stage.  
+Large-scale benchmarking, quantitative validation, and enterprise-grade evaluation remain open areas for collaborative research.
+
+This section is provided to clarify structural feasibility, not to assert production readiness.
+
+---
+
+## Model Version Sensitivity Note (Scope)
+
+Initial observations began during the GPT-4 era and continued across subsequent base-model iterations.
+
+Variations in behavioral expression across model updates suggest that the Behavior Layer remains partly dependent on base model characteristics rather than functioning as a model-independent override.
+
+This reinforces the positioning of Kotodama OS as a structural layer that operates **in conjunction with**, rather than independently from, the underlying model.
 
 ---
 
