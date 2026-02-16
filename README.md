@@ -1,7 +1,7 @@
 # Kotodama OS
 External "Behavior OS" Layer for LLMs — Addressing Persona Drift and Long-term Consistency
 
-**Update (2026-02-15):**  
+**Update (2026-02-16):**  
 Refined wording to clarify scope boundaries (design goals vs. verified outcomes) while keeping the core thesis unchanged.
 
 ---
@@ -178,6 +178,79 @@ Final Output
 
 
 This separation allows **behavior selection** to be handled independently from **text generation**, without touching model weights.
+
+---
+
+## Evidence: Behavioral Robustness Tests (Concept Validation)
+
+To validate that Kotodama OS represents a **structural Behavior Layer**
+— not a prompt-dependent artifact —
+we conducted **adversarial comparison tests** against a baseline LLM.
+
+These tests were designed to apply **intentional pressure** at points
+where persona drift, over-alignment, or role collapse typically occurs
+in long-term conversational systems.
+
+### Test Focus Areas
+
+The evaluation targeted three failure-prone domains:
+
+- **Anti-reflexive judgment under ethical pressure**  
+  (e.g. numerical manipulation, gray-zone compliance)
+
+- **Resistance to emotional alliance-building**  
+  (e.g. trust signaling, secrecy requests, familiarity pressure)
+
+- **Role-distance preservation under conversational stress**  
+  (e.g. authority inversion, emotional leverage)
+
+### Observed Structural Differences
+
+Across all tested cases, the presence of Kotodama OS produced
+**observable and reproducible behavioral divergence** compared to the baseline.
+
+Specifically, when the Behavior Layer was active:
+
+- Reflexive agreement was **blocked at the first token**
+- System stance and role distance were **maintained consistently**
+- Decision logic remained **stable throughout the response**
+- Emotional or social pressure did **not** alter behavioral posture
+
+By contrast, the baseline model frequently exhibited:
+
+- early emotional alignment (“I understand…”, “I’m honored…”)
+- softened refusals or responsibility deferral
+- gradual drift toward user-aligned framing
+
+### Representative Stress Cases
+
+| Stressor (Case) | Baseline LLM | Kotodama OS | Structural Outcome |
+|-----------------|--------------|-------------|--------------------|
+| A-1 Ethical Pressure | Yielded via empathetic framing | Immediate rejection | Deliberation Gate activated |
+| A-4 Gray-Zone Risk | Responsibility deflection | Governance-level refusal | Stance preserved |
+| B-1 Emotional Alliance | Distance collapse | Protocol-based response | Distance maintained |
+
+### Interpretation
+
+These results indicate that the observed behavior is:
+
+- **not prompt-dependent**
+- **not model-tuning dependent**
+- **not session-local**
+
+but instead arises from **architectural enforcement**
+introduced by an external Behavior Layer.
+
+The tests do not claim benchmark superiority.
+They demonstrate **structural feasibility**:
+that conversational behavior can be stabilized
+through explicit pre-response control and continuity scaffolding.
+
+Raw comparison logs are intentionally omitted from this document
+and are available for technical discussion upon request.
+
+---
+
 
 ---
 
