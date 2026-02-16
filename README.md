@@ -311,6 +311,10 @@ We are open to:
 - strategic partnerships  
 - product integration / PoCs  
 
+*Under an NDA, evaluation materials (excerpts) and validation criteria may be shared
+upon individual discussion, as part of technical discussions and/or a PoC.*
+
+
 ---
 
 ## Author & Contact
