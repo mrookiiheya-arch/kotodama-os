@@ -251,9 +251,6 @@ and are available for technical discussion upon request.
 
 ---
 
-
----
-
 ## Prototype Status and Observed Structural Behavior (Non-Production)
 
 Kotodama OS currently exists as an **individual-level functional prototype** implemented as an external Behavior Layer.
