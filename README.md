@@ -1,8 +1,16 @@
 # Kotodama OS
 External "Behavior OS" Layer for LLMs — Addressing Persona Drift and Long-term Consistency
 
-**Update (2026-02-16):**  
+**Update (2026-02-17):**  
 Refined wording to clarify scope boundaries (design goals vs. verified outcomes) while keeping the core thesis unchanged.
+
+---
+
+## Overview
+
+I work on translating elements that emerge in human interpersonal interaction—such as trust, interaction distance, and decision instability—into observable behavioral characteristics, rather than treating them as internal psychological states.
+
+By decomposing these elements and elevating them into controllable and designable aspects of AI behavior, I define and stabilize them as an external layer. This enables AI systems to be treated as having long-term behavioral stability and consistent interaction patterns over extended use.
 
 ---
 
