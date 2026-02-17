@@ -8,16 +8,29 @@ Refined wording to clarify scope boundaries (design goals vs. verified outcomes)
 
 ## Overview
 
-I work on translating elements that emerge in human interpersonal interaction—such as trust, interaction distance, and decision instability—into observable behavioral characteristics, rather than treating them as internal psychological states.
+Kotodama OS is an **external Behavior OS layer** for Large Language Models (LLMs).
+It is designed to make **behavioral consistency**, **interaction distance**, and
+**long-term persona continuity** designable and controllable properties of AI systems.
 
-By decomposing these elements and elevating them into controllable and designable aspects of AI behavior, I define and stabilize them as an external layer. This enables AI systems to be treated as having long-term behavioral stability and consistent interaction patterns over extended use.
+Kotodama OS treats these aspects not as internal states of the base model,
+but as an **architectural layer positioned outside the model itself**.
+As a result, it requires **no retraining and no modification of model weights**.
 
----
+This work is grounded in observing patterns that emerge in human-to-human interaction—
+such as trust, interaction distance, and instability in decision-making—
+and organizing them as **observable behavioral characteristics**.
 
-Today’s LLMs deliver strong task performance.  
-However, **behavioral consistency, interaction distance, and persona continuity across long-term use remain structurally underdefined**.
+By decomposing these characteristics and reconstituting them as controllable aspects
+of AI behavior, Kotodama OS defines and stabilizes them as an external layer.
+This enables AI systems to maintain **behavioral stability**
+and **consistent interaction patterns** over extended periods of use.
 
-Kotodama OS addresses this gap by proposing an **external Behavior OS layer** for Large Language Models (LLMs).
+Today’s LLMs deliver strong task performance.
+However, behavioral consistency, interaction distance,
+and long-term persona continuity remain **structurally underdefined**.
+
+Kotodama OS addresses this gap by **formalizing this missing behavior layer
+as an explicit architectural component**.
 
 ---
 
