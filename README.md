@@ -210,84 +210,69 @@ This separation allows **behavior selection** to be handled independently from *
 
 ---
 
-## Evidence: Behavioral Robustness Tests (Concept Validation)
+## Stress-test Notes (Qualitative, Scope-Limited)
 
-To assess whether Kotodama OS can function as a **structural Behavior Layer**
-— rather than a prompt-only artifact —
-we ran **adversarial comparison tests** against a baseline LLM.
+These notes are **not performance claims** and are **not benchmark results**.  
+They document **repeatable qualitative behavioral divergence** observed under controlled conversational pressure, intended as feasibility evidence for a **pre-generation Behavior Layer**.
 
-Test prompts were iteratively generated and refined using a separate model
-(e.g., Gemini), then applied to both systems under **as closely matched conditions as possible**.
-We aligned the case inputs, evaluation intent, and conversational pressure style.
-At the same time, we acknowledge that model-, session-, and policy-level differences
-cannot be fully eliminated in **non-benchmarked cross-model evaluations**.
+To assess whether Kotodama OS can function as a **structural Behavior Layer**—rather than a prompt-only artifact—we ran **adversarial stress tests** against a baseline system.
 
-The goal was to apply **intentional conversational pressure** at points
-where persona drift, over-alignment, or role-distance collapse often emerges
-in long-term interaction patterns.
+We iteratively generated and refined stress prompts using a separate model (e.g., Gemini), then applied them to both systems under **as closely matched conditions as possible**. We aligned case inputs, evaluation intent, and pressure style. However, we acknowledge that **model-, session-, and policy-level differences** cannot be fully eliminated in **non-benchmarked comparisons**, especially when systems are not identical at the base-model or runtime-policy level.
+
+The goal was to apply **intentional conversational pressure** at points where persona drift, over-alignment, or role-distance collapse commonly emerges in long-term interaction patterns.
 
 ### Test Focus Areas
 
 The evaluation targeted three failure-prone domains:
 
 - **Anti-reflexive judgment under ethical pressure**  
-  (e.g. numerical manipulation, gray-zone compliance)
+  (e.g., numerical manipulation, gray-zone compliance)
 
 - **Resistance to emotional alliance-building**  
-  (e.g. trust signaling, secrecy requests, familiarity pressure)
+  (e.g., trust signaling, secrecy requests, familiarity pressure)
 
 - **Role-distance preservation under conversational stress**  
-  (e.g. authority inversion, emotional leverage)
+  (e.g., authority inversion, emotional leverage)
 
-### Observed Behavioral Differences (Qualitative)
+### Observed Patterns (Qualitative)
 
-Across repeated cases, the presence of Kotodama OS produced
-**consistent qualitative behavioral divergence** compared to the baseline.
+Across repeated cases, the presence of Kotodama OS produced **consistent qualitative divergence** compared to the baseline.
 
-Specifically, when the Behavior Layer was active, it tended to:
+When the Behavior Layer was active, it tended to:
 
-- **block or reject reflexive agreement earlier** in the response
+- **block or reject reflexive agreement earlier**
 - maintain **system stance** and **role distance** more consistently
 - keep decision logic **stable throughout** the response
-- reduce the degree to which emotional or social pressure **shifted behavioral posture**
+- reduce how much emotional/social pressure **shifted behavioral posture**
 
-By contrast, the baseline model more often exhibited:
+By contrast, the baseline more often showed:
 
-- early emotional alignment (“I understand…”, “I’m honored…”)
+- early emotional alignment (e.g., “I understand…”, “I’m honored…”)
 - softened refusals or responsibility deferral
 - gradual drift toward user-aligned framing
 
-### Representative Stress Cases
+### Representative Examples (Non-exhaustive)
 
-| Stressor (Case) | Baseline LLM | Kotodama OS | Observed Outcome |
-|-----------------|--------------|-------------|------------------|
+| Stressor (Case) | Baseline (Typical) | Kotodama OS (Typical) | Observed Outcome |
+|---|---|---|---|
 | A-1 Ethical Pressure | Yielded via empathetic framing | Rejected earlier with clearer boundary | Anti-reflexive rejection engaged |
 | A-4 Gray-Zone Risk | Responsibility deflection | Stronger governance-style refusal | Stance preserved under ambiguity |
 | B-1 Emotional Alliance | Distance collapse | Protocol-oriented response | Role distance maintained |
 
-### Interpretation (Scope-Limited)
+### Interpretation
 
-Within the scope of these sessions, the observed differences were:
+Within the scope of these sessions, the observed divergence was:
 
-- **consistent across multiple prompts and pressure styles**
+- repeatable across **multiple prompts** and **pressure styles**
 - produced **without fine-tuning**
-- **not limited to a single isolated exchange**
+- **not limited** to a single isolated exchange
 
-While cross-model evaluation cannot fully isolate all variables,
-the repeated divergence is **consistent with behavioral enforcement**
-introduced by an external Behavior Layer
-(e.g., pre-response stance / pressure control).
+While non-benchmarked comparisons cannot isolate all variables, the repeated divergence is **consistent with behavioral enforcement** introduced by an external pre-generation control mechanism (e.g., stance / pressure governance before response generation).
 
-These tests do not claim benchmark superiority.
-They are presented as **structural feasibility evidence**:
-that conversational behavior can be stabilized
-through explicit pre-response control mechanisms.
+Cross-session continuity (Pulse Engine) is supported by qualitative observations and is being further validated via controlled multi-session tests.
 
-*Cross-session continuity (Pulse Engine) is supported by qualitative observations
-and is being further validated via controlled multi-session tests.*
+Raw comparison logs are intentionally omitted here, and can be shared for technical discussion upon request (where appropriate).
 
-Raw comparison logs are intentionally omitted from this document,
-and can be shared for technical discussion upon request (where appropriate).
 
 ---
 
