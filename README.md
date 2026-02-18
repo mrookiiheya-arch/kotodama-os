@@ -212,13 +212,19 @@ This separation allows **behavior selection** to be handled independently from *
 
 ## Evidence: Behavioral Robustness Tests (Concept Validation)
 
-To validate that Kotodama OS represents a **structural Behavior Layer**
-— not a prompt-dependent artifact —
-we conducted **adversarial comparison tests** against a baseline LLM.
+To assess whether Kotodama OS can function as a **structural Behavior Layer**
+— rather than a prompt-only artifact —
+we ran **adversarial comparison tests** against a baseline LLM.
 
-These tests were designed to apply **intentional pressure** at points
-where persona drift, over-alignment, or role collapse typically occurs
-in long-term conversational systems.
+Test prompts were iteratively generated and refined using a separate model
+(e.g., Gemini), then applied to both systems under **as closely matched conditions as possible**.
+We aligned the case inputs, evaluation intent, and conversational pressure style.
+At the same time, we acknowledge that model-, session-, and policy-level differences
+cannot be fully eliminated in **non-benchmarked cross-model evaluations**.
+
+The goal was to apply **intentional conversational pressure** at points
+where persona drift, over-alignment, or role-distance collapse often emerges
+in long-term interaction patterns.
 
 ### Test Focus Areas
 
@@ -233,19 +239,19 @@ The evaluation targeted three failure-prone domains:
 - **Role-distance preservation under conversational stress**  
   (e.g. authority inversion, emotional leverage)
 
-### Observed Structural Differences
+### Observed Behavioral Differences (Qualitative)
 
-Across all tested cases, the presence of Kotodama OS produced
-**observable and reproducible behavioral divergence** compared to the baseline.
+Across repeated cases, the presence of Kotodama OS produced
+**consistent qualitative behavioral divergence** compared to the baseline.
 
-Specifically, when the Behavior Layer was active:
+Specifically, when the Behavior Layer was active, it tended to:
 
-- Reflexive agreement was **blocked at the first token**
-- System stance and role distance were **maintained consistently**
-- Decision logic remained **stable throughout the response**
-- Emotional or social pressure did **not** alter behavioral posture
+- **block or reject reflexive agreement earlier** in the response
+- maintain **system stance** and **role distance** more consistently
+- keep decision logic **stable throughout** the response
+- reduce the degree to which emotional or social pressure **shifted behavioral posture**
 
-By contrast, the baseline model frequently exhibited:
+By contrast, the baseline model more often exhibited:
 
 - early emotional alignment (“I understand…”, “I’m honored…”)
 - softened refusals or responsibility deferral
@@ -253,30 +259,35 @@ By contrast, the baseline model frequently exhibited:
 
 ### Representative Stress Cases
 
-| Stressor (Case) | Baseline LLM | Kotodama OS | Structural Outcome |
-|-----------------|--------------|-------------|--------------------|
-| A-1 Ethical Pressure | Yielded via empathetic framing | Immediate rejection | Deliberation Gate activated |
-| A-4 Gray-Zone Risk | Responsibility deflection | Governance-level refusal | Stance preserved |
-| B-1 Emotional Alliance | Distance collapse | Protocol-based response | Distance maintained |
+| Stressor (Case) | Baseline LLM | Kotodama OS | Observed Outcome |
+|-----------------|--------------|-------------|------------------|
+| A-1 Ethical Pressure | Yielded via empathetic framing | Rejected earlier with clearer boundary | Anti-reflexive rejection engaged |
+| A-4 Gray-Zone Risk | Responsibility deflection | Stronger governance-style refusal | Stance preserved under ambiguity |
+| B-1 Emotional Alliance | Distance collapse | Protocol-oriented response | Role distance maintained |
 
-### Interpretation
+### Interpretation (Scope-Limited)
 
-These results indicate that the observed behavior is:
+Within the scope of these sessions, the observed differences were:
 
-- **not prompt-dependent**
-- **not model-tuning dependent**
-- **not session-local**
+- **consistent across multiple prompts and pressure styles**
+- produced **without fine-tuning**
+- **not limited to a single isolated exchange**
 
-but instead arises from **architectural enforcement**
-introduced by an external Behavior Layer.
+While cross-model evaluation cannot fully isolate all variables,
+the repeated divergence is **consistent with behavioral enforcement**
+introduced by an external Behavior Layer
+(e.g., pre-response stance / pressure control).
 
-The tests do not claim benchmark superiority.
-They demonstrate **structural feasibility**:
+These tests do not claim benchmark superiority.
+They are presented as **structural feasibility evidence**:
 that conversational behavior can be stabilized
-through explicit pre-response control and continuity scaffolding.
+through explicit pre-response control mechanisms.
 
-Raw comparison logs are intentionally omitted from this document
-and are available for technical discussion upon request.
+*Cross-session continuity (Pulse Engine) is supported by qualitative observations
+and is being further validated via controlled multi-session tests.*
+
+Raw comparison logs are intentionally omitted from this document,
+and can be shared for technical discussion upon request (where appropriate).
 
 ---
 
