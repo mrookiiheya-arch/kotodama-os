@@ -350,7 +350,17 @@ Tokyo, Japan
 
 - GitHub Issues: use this repository  
 - Mail: mr@ookiiheya.com  
-- LinkedIn: https://www.linkedin.com/in/ryo-matsuo
+- LinkedIn: https://www.linkedin.com/in/ryo-matsuo  
+
+## Communication Policy
+
+**Inquiry handling**  
+To avoid misunderstandings and ensure proper information control, **initial communication is handled by email only** (no calls, in-person meetings, or online meetings).
+
+**NDA (Non-Disclosure Agreement)**  
+Kotodama OS has characteristics such that **even high-level sharing may lead to unintended reproduction or imitation**.  
+Therefore, any detailed information sharing is based on a **mutual NDA**.  
+Once an NDA is in place, I can share available materials via email **within the agreed scope** (scope and level of detail adjusted case by case).
 
 ---
 
