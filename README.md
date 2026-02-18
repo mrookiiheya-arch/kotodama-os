@@ -351,3 +351,21 @@ Tokyo, Japan
 - GitHub Issues: use this repository  
 - Mail: mr@ookiiheya.com  
 - LinkedIn: https://www.linkedin.com/in/ryo-matsuo
+
+---
+
+## About the position of this work
+
+At present, there is no widely established job title that precisely describes this project or my role within it.
+
+My focus is not on AI capabilities themselves, but on how people understand AI and how they continue to engage with it over time.
+
+Between humans and AI, gaps and contradictions tend to emerge — such as misinterpreted intent, inflated expectations, unclear responsibility, or inconsistent behavior. These frictions often become obstacles to long-term use.
+
+This project observes where such gaps arise and addresses them not at the level of models or infrastructure, but at the level of interaction — by designing consistency in relationships and behavior within the interaction layer where humans and AI meet.
+
+In practical terms, this work is closest to the following:
+
+**Designing systems that stand between humans and AI to reduce contradictions in interpretation and behavior.**
+
+This description is not intended to define a formal title, but to clarify the scope and perspective of this project.
