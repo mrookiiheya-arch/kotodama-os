@@ -1,36 +1,44 @@
 # Kotodama OS
-External "Behavior OS" Layer for LLMs — Addressing Persona Drift and Long-term Consistency
+**External "Behavior OS" Layer for LLMs — Addressing Persona Drift and Long-term Consistency**
 
-**Update (2026-02-17):**  
-Refined wording to clarify scope boundaries (design goals vs. verified outcomes) while keeping the core thesis unchanged.
+**Last updated:** 2026-02-18
+
+---
+
+## Executive Snapshot
+Kotodama OS proposes an external, **pre-generation Behavior OS layer** for LLM-based systems to stabilize **behavioral consistency**, **interaction distance**, and **long-term persona continuity** across multi-session use (**no retraining / no weight changes**).
+
+It targets **persona drift** as a longitudinal product risk: systems remain capable, yet become less reliable in **stance**, **distance regulation**, and **accountability** over time.
+
+Core components: **Deliberation Gate** (pre-response stance & pressure control) + **Pulse Engine** (continuity scaffolding across sessions).  
+(Status: **Concept & Architecture + individual prototype**; non-production; not benchmarked.)
+
+Open to: research discussion, technical review, and product integration / PoCs (evaluation materials can be shared under NDA).
 
 ---
 
 ## Overview
+Kotodama OS is an external Behavior OS layer for Large Language Models (LLMs).  
+It is designed to make **behavioral consistency**, **interaction distance**, and **long-term persona continuity** designable and controllable properties of AI systems.
 
-Kotodama OS is an **external Behavior OS layer** for Large Language Models (LLMs).
-It is designed to make **behavioral consistency**, **interaction distance**, and
-**long-term persona continuity** designable and controllable properties of AI systems.
+Kotodama OS treats these aspects not as internal states of the base model,  
+but as an **architectural layer positioned outside the model itself**.  
+As a result, it requires **no retraining** and **no modification of model weights**.
 
-Kotodama OS treats these aspects not as internal states of the base model,
-but as an **architectural layer positioned outside the model itself**.
-As a result, it requires **no retraining and no modification of model weights**.
-
-This work is grounded in observing patterns that emerge in human-to-human interaction—
-such as trust, interaction distance, and instability in decision-making—
+This work is grounded in observing recurring patterns in long-term human interaction—  
+such as trust formation, distance regulation, and drift under pressure—  
 and organizing them as **observable behavioral characteristics**.
 
-By decomposing these characteristics and reconstituting them as controllable aspects
-of AI behavior, Kotodama OS defines and stabilizes them as an external layer.
-This enables AI systems to maintain **behavioral stability**
-and **consistent interaction patterns** over extended periods of use.
+By decomposing these characteristics and reconstituting them as controllable aspects of AI behavior,  
+Kotodama OS defines and stabilizes a missing behavior layer.  
+This enables AI systems to maintain **behavioral stability** and **consistent interaction patterns**  
+over extended, multi-session use.
 
-Today’s LLMs deliver strong task performance.
-However, behavioral consistency, interaction distance,
-and long-term persona continuity remain **structurally underdefined**.
+Today’s LLMs deliver strong task performance.  
+However, behavioral consistency, interaction distance, and long-term persona continuity remain **structurally underdefined**.
 
-Kotodama OS addresses this gap by **formalizing this missing behavior layer
-as an explicit architectural component**.
+Kotodama OS addresses this gap by **formalizing this missing Behavior Layer as an explicit architectural component**.
+
 
 ---
 
