@@ -1,12 +1,24 @@
 # Kotodama OS
 **External "Behavior OS" Layer for LLMs — Addressing Persona Drift and Long-term Consistency**
 
-**Last updated:** 2026-02-18
+**Last updated:** 2026-02-25
 
 ---
 
+## TL;DR
+
+Kotodama OS formalizes a missing Behavior Layer in today’s AI stack.
+
+It introduces a pre-response behavioral governance layer that stabilizes long-term behavioral consistency without retraining or weight modification.
+
+Status: Concept architecture + individual prototype.
+Open to technical review and PoC discussion under mutual NDA.
+
+---
+
+
 ## Executive Snapshot
-Kotodama OS proposes an external, **pre-generation Behavior OS layer** for LLM-based systems to stabilize **behavioral consistency**, **interaction distance**, and **long-term persona continuity** across multi-session use (**no retraining / no weight changes**).
+Kotodama OS proposes an external, **pre-response Behavior OS layer** for LLM-based systems to stabilize **behavioral consistency**, **interaction distance**, and **long-term persona continuity** across multi-session use (**no retraining / no weight changes**).
 
 It targets **persona drift** as a longitudinal product risk: systems remain capable, yet become less reliable in **stance**, **distance regulation**, and **accountability** over time.
 
@@ -39,6 +51,21 @@ However, behavioral consistency, interaction distance, and long-term persona con
 
 Kotodama OS addresses this gap by **formalizing this missing Behavior Layer as an explicit architectural component**.
 
+As AI systems become increasingly socially embedded, behavioral reliability is evolving from a UX concern into a structural trust requirement.
+
+---
+
+## Implementation Scope (Clarification)
+
+At its current stage, Kotodama OS exists as a structural orchestration prototype implemented within an existing LLM environment.
+“External” refers to architectural separation of behavioral governance from generation, not necessarily a physically separate runtime service in the current prototype.
+It is not a physically separated runtime module or independently deployed middleware.
+
+The prototype does not rely on model retraining or weight modification.
+Instead, it explores how behavioral governance and longitudinal consistency can be structured at an architectural level prior to response generation.
+
+Future implementation is conceptually aligned with an orchestration-layer integration approach.
+Specific control logic, parameterization, and implementation details remain proprietary.
 
 ---
 
@@ -213,7 +240,7 @@ This separation allows **behavior selection** to be handled independently from *
 ## Stress-test Notes (Qualitative, Scope-Limited)
 
 These notes are **not performance claims** and are **not benchmark results**.  
-They document **repeatable qualitative behavioral divergence** observed under controlled conversational pressure, intended as feasibility evidence for a **pre-generation Behavior Layer**.
+They document **repeatable qualitative behavioral divergence** observed under controlled conversational pressure, intended as feasibility evidence for a **pre-response Behavior Layer**.
 
 To assess whether Kotodama OS can function as a **structural Behavior Layer**—rather than a prompt-only artifact—we ran **adversarial stress tests** against a baseline system.
 
@@ -267,7 +294,7 @@ Within the scope of these sessions, the observed divergence was:
 - produced **without fine-tuning**
 - **not limited** to a single isolated exchange
 
-While non-benchmarked comparisons cannot isolate all variables, the repeated divergence is **consistent with behavioral enforcement** introduced by an external pre-generation control mechanism (e.g., stance / pressure governance before response generation).
+While non-benchmarked comparisons cannot isolate all variables, the repeated divergence is **consistent with behavioral enforcement** introduced by an external pre-response control mechanism (e.g., stance / pressure governance before response generation).
 
 Cross-session continuity (Pulse Engine) is supported by qualitative observations and is being further validated via controlled multi-session tests.
 
@@ -354,13 +381,12 @@ Tokyo, Japan
 
 ## Communication Policy
 
-**Inquiry handling**  
-To avoid misunderstandings and ensure proper information control, **initial communication is handled by email only** (no calls, in-person meetings, or online meetings).
+### Inquiry Handling
+To ensure clarity and prevent miscommunication, initial communication is handled via email only (no calls or meetings at the first stage).
 
-**NDA (Non-Disclosure Agreement)**  
-Kotodama OS has characteristics such that **even high-level sharing may lead to unintended reproduction or imitation**.  
-Therefore, any detailed information sharing is based on a **mutual NDA**.  
-Once an NDA is in place, I can share available materials via email **within the agreed scope** (scope and level of detail adjusted case by case).
+### NDA (Non-Disclosure Agreement)
+Detailed implementation materials and architectural specifics are shared selectively under mutual NDA.
+The scope and level of detail are adjusted case by case upon discussion.
 
 ---
 
