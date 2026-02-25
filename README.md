@@ -14,6 +14,8 @@ It introduces a pre-response behavioral governance layer that stabilizes long-te
 Status: Concept architecture + individual prototype.
 Open to technical review and PoC discussion under mutual NDA.
 
+Behavioral stability refers to governance-level continuity, not tonal rigidity or emotional suppression.
+
 ---
 
 
@@ -24,6 +26,9 @@ It targets **persona drift** as a longitudinal product risk: systems remain capa
 
 Core components: **Deliberation Gate** (pre-response stance & pressure control) + **Pulse Engine** (continuity scaffolding across sessions).  
 (Status: **Concept & Architecture + individual prototype**; non-production; not benchmarked.)
+
+In this context, "stability" does not imply emotional flatness or resistance to adaptive empathy.
+It refers specifically to preservation of core decision-governance and role-boundary integrity under relational variability.
 
 Open to: research discussion, technical review, and product integration / PoCs (evaluation materials can be shared under NDA).
 
@@ -53,6 +58,13 @@ Kotodama OS addresses this gap by **formalizing this missing Behavior Layer as a
 
 As AI systems become increasingly socially embedded, behavioral reliability is evolving from a UX concern into a structural trust requirement.
 
+In this context, behavioral stability is not an end in itself.
+It functions as the foundation for sustainable human–AI relational continuity.
+
+Persona drift, as defined here, refers to governance instability and erosion of role-boundaries across sessions — not to adaptive tonal variation or context-sensitive empathy.
+
+Accordingly, the objective is not rigidity, but the preservation of stable interaction identity over time.
+
 ---
 
 ## Implementation Scope (Clarification)
@@ -81,6 +93,26 @@ for LLM-based systems.
 
 Unlike approaches that rely on prompt engineering, system instructions, or fine-tuning, Kotodama OS proposes a **non-reflexive deliberation layer** that operates **externally to the base model**, with the explicit goal of supporting **stable behavior across extended interactions**.
 
+This stability is not intended as rigidity.
+It exists to preserve sustainable human–AI relational continuity, where presence remains stable without collapsing into reflexive alignment or emotional fusion.
+
+Crucially, Kotodama OS distinguishes between adaptive relational calibration and governance-level collapse.  
+While emotional engagement and tonal warmth may vary across contexts, core stance continuity and decision-governance integrity are preserved.
+
+---
+
+## Governance vs Tone (Clarification)
+
+Kotodama OS does not aim to suppress empathy or emotional alignment.
+
+It distinguishes between:
+
+- Adaptive relational calibration (allowed)
+- Governance-level reflexive collapse (restricted)
+
+Tonal warmth may vary across contexts.
+Core stance integrity does not.
+
 ---
 
 ## No Retraining Required
@@ -94,6 +126,8 @@ Instead, it functions as an **external control layer** that governs:
 - response temperature (distance / tone)
 
 These properties are difficult to achieve reliably through prompting or fine-tuning alone, which typically optimize for **single-session performance**, not longitudinal consistency.
+
+By separating behavioral governance from generation, Kotodama OS allows AI systems to maintain relational stability without sacrificing adaptability.
 
 ---
 
@@ -300,6 +334,7 @@ Cross-session continuity (Pulse Engine) is supported by qualitative observations
 
 Raw comparison logs are intentionally omitted here, and can be shared for technical discussion upon request (where appropriate).
 
+These observations concern governance-level divergence, not tonal warmth or empathetic expression.
 
 ---
 
