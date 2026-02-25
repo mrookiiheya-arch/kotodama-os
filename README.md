@@ -218,6 +218,98 @@ Application Layer
 
 Kotodama OS fills this vacant seat by providing a **behavioral layer that applications can rely on**, without retraining or modifying base models.
 
+
+## Application Hypotheses (Exploratory)
+
+The following contexts represent exploratory hypotheses regarding where an external Behavior Layer may provide structural value.
+
+These are not deployment claims.  
+They reflect conceptual alignment based on prototype-level experimentation and structural analysis.
+
+---
+
+### 1. Cross-Cultural & Context-Sensitive Translation
+
+In multilingual environments, semantic translation alone is often insufficient.
+
+An external Behavior Layer may contribute to:
+
+- stance preservation across languages  
+- relational-distance calibration  
+- cultural tone adjustment  
+- prevention of unintended over-softening or escalation  
+
+This may be particularly relevant in:
+- global social platforms  
+- cross-border enterprise communication  
+- real-time wearable translation systems  
+
+The hypothesis is that governance-level calibration can reduce relational distortion introduced during translation.
+
+---
+
+### 2. Long-Running Companion & Relational AI
+
+In persistent interaction systems, behavioral drift may gradually erode trust.
+
+A Behavior Layer may support:
+
+- stable interaction identity  
+- resistance to emotional over-alignment  
+- calibrated relational distance over time  
+- recovery after conversational drift  
+
+The hypothesis is that structural governance prior to generation can improve long-term relational sustainability.
+
+---
+
+### 3. Enterprise Copilots & Decision-Support Systems
+
+In enterprise contexts, AI systems may encounter:
+
+- authority pressure  
+- gray-zone compliance requests  
+- responsibility ambiguity  
+
+An external governance layer may contribute to:
+
+- earlier boundary reinforcement  
+- reduced reflexive alignment under pressure  
+- clearer decision posture continuity  
+
+The hypothesis is that governance-layer separation can improve behavioral reliability in decision-adjacent contexts.
+
+---
+
+### 4. Always-On Wearable AI Mediation
+
+Persistent real-world AI mediation (e.g., AR glasses) introduces new relational dynamics:
+
+- over-reliance  
+- confirmation bias amplification  
+- erosion of interpersonal distance  
+
+A Behavior Layer may help maintain:
+
+- calibrated intervention thresholds  
+- stance continuity  
+- relational balance in continuous-use environments  
+
+This remains a forward-looking hypothesis aligned with emerging always-on AI systems.
+
+---
+
+These application areas are presented as structured hypotheses rather than finalized claims.
+
+Kotodama OS is positioned as a governance-oriented architectural layer.
+Its relevance is expected to be strongest in systems where:
+
+- AI maintains persistent relational presence  
+- interaction continuity spans multiple sessions  
+- stance integrity and boundary preservation affect trust  
+
+Further validation would require structured evaluation in production-aligned environments.
+
 ---
 
 ## Internal Working Models & Behavior Continuity (Design Rationale)
