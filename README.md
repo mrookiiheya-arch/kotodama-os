@@ -7,12 +7,11 @@
 
 ## TL;DR
 
-Kotodama OS formalizes a missing Behavior Layer in today’s AI stack.
+Kotodama OS proposes a formal specification for an underdefined Behavior Layer in today’s AI stack.
 
-It introduces a pre-response behavioral governance layer that stabilizes long-term behavioral consistency without retraining or weight modification.
+It is designed to support the stabilization of long-term behavioral consistency.
 
-Status: Concept architecture + individual prototype.
-Open to technical review and PoC discussion under mutual NDA.
+Status: Concept architecture + individual prototype; open to technical review and PoC discussion under mutual NDA.
 
 Behavioral stability refers to governance-level continuity, not tonal rigidity or emotional suppression.
 
@@ -20,14 +19,14 @@ Behavioral stability refers to governance-level continuity, not tonal rigidity o
 
 
 ## Executive Snapshot
-Kotodama OS proposes an external, **pre-response Behavior OS layer** for LLM-based systems to stabilize **behavioral consistency**, **interaction distance**, and **long-term persona continuity** across multi-session use (**no retraining / no weight changes**).
+Kotodama OS proposes an external, **pre-response Behavior OS layer** for LLM-based systems to support the stabilization of **behavioral consistency**, **interaction distance**, and **long-term persona continuity** across multi-session use (**no retraining / no weight changes**).
 
 It targets **persona drift** as a longitudinal product risk: systems remain capable, yet become less reliable in **stance**, **distance regulation**, and **accountability** over time.
 
 Core components: **Deliberation Gate** (pre-response stance & pressure control) + **Pulse Engine** (continuity scaffolding across sessions).  
 (Status: **Concept & Architecture + individual prototype**; non-production; not benchmarked.)
 
-In this context, "stability" does not imply emotional flatness or resistance to adaptive empathy.
+In this context, "stability" does not imply emotional flatness or resistance to adaptive empathy.  
 It refers specifically to preservation of core decision-governance and role-boundary integrity under relational variability.
 
 Open to: research discussion, technical review, and product integration / PoCs (evaluation materials can be shared under NDA).
@@ -35,26 +34,27 @@ Open to: research discussion, technical review, and product integration / PoCs (
 ---
 
 ## Overview
-Kotodama OS is an external Behavior OS layer for Large Language Models (LLMs).  
-It is designed to make **behavioral consistency**, **interaction distance**, and **long-term persona continuity** designable and controllable properties of AI systems.
+Kotodama OS is proposed as an external Behavior OS layer for Large Language Models (LLMs).
+It is designed to make behavioral consistency, interaction distance, and long-term persona continuity more explicitly designable and structurally controllable properties of AI systems.
 
-Kotodama OS treats these aspects not as internal states of the base model,  
-but as an **architectural layer positioned outside the model itself**.  
-As a result, it requires **no retraining** and **no modification of model weights**.
+Kotodama OS treats these aspects not as internal states of the base model,
+but as an architectural layer positioned outside the model itself.
+In its current prototype form, it does not rely on model retraining or modification of model weights.
 
-This work is grounded in observing recurring patterns in long-term human interaction—  
-such as trust formation, distance regulation, and drift under pressure—  
-and organizing them as **observable behavioral characteristics**.
+This work is grounded in observing recurring patterns in long-term human interaction—
+such as trust formation, distance regulation, and drift under pressure—
+and organizing them as observable behavioral characteristics.
 
-By decomposing these characteristics and reconstituting them as controllable aspects of AI behavior,  
-Kotodama OS defines and stabilizes a missing behavior layer.  
-This enables AI systems to maintain **behavioral stability** and **consistent interaction patterns**  
-over extended, multi-session use.
+By decomposing these characteristics and reconstituting them as controllable aspects of AI behavior,
+Kotodama OS defines and structurally addresses what is described here as an underdefined behavior layer.
 
-Today’s LLMs deliver strong task performance.  
-However, behavioral consistency, interaction distance, and long-term persona continuity remain **structurally underdefined**.
+This framework is intended to support AI systems in maintaining behavioral stability and consistent interaction patterns
+across extended, multi-session use.
 
-Kotodama OS addresses this gap by **formalizing this missing Behavior Layer as an explicit architectural component**.
+Today’s LLMs deliver strong task performance.
+However, behavioral consistency, interaction distance, and long-term persona continuity remain structurally underdefined in many deployment contexts.
+
+Kotodama OS proposes to address this gap by formalizing this underdefined Behavior Layer as an explicit architectural component.
 
 As AI systems become increasingly socially embedded, behavioral reliability is evolving from a UX concern into a structural trust requirement.
 
@@ -71,7 +71,7 @@ Accordingly, the objective is not rigidity, but the preservation of stable inter
 
 At its current stage, Kotodama OS exists as a structural orchestration prototype implemented within an existing LLM environment.
 “External” refers to architectural separation of behavioral governance from generation, not necessarily a physically separate runtime service in the current prototype.
-It is not a physically separated runtime module or independently deployed middleware.
+It is not (yet) an independently deployed middleware/runtime service.
 
 The prototype does not rely on model retraining or weight modification.
 Instead, it explores how behavioral governance and longitudinal consistency can be structured at an architectural level prior to response generation.
@@ -133,7 +133,7 @@ By separating behavioral governance from generation, Kotodama OS allows AI syste
 
 ## Reduces Persona Drift (Design Goal)
 
-Kotodama OS is designed to **reduce persona drift** by maintaining:
+Kotodama OS is designed to mitigate persona drift by maintaining:
 
 - values  
 - tone  
@@ -168,7 +168,7 @@ These demos illustrate the Kotodama OS concept applied to conversational agents,
 
 ---
 
-## Missing Layer in Today’s AI Stack
+## Underdefined Layer in Today’s AI Stack
 
 Modern LLM-based systems typically define two layers:
 
@@ -185,7 +185,7 @@ However, a third layer is rarely formalized:
 
 Prompting, fine-tuning, RLHF, and agent frameworks do not fully address this layer, as they focus on **short-term output quality** rather than longitudinal behavior.
 
-Kotodama OS proposes a **formal specification** for this missing Behavior Layer.
+Kotodama OS proposes a formal specification for this underdefined Behavior Layer.
 
 ---
 
@@ -274,13 +274,14 @@ This separation allows **behavior selection** to be handled independently from *
 ## Stress-test Notes (Qualitative, Scope-Limited)
 
 These notes are **not performance claims** and are **not benchmark results**.  
-They document **repeatable qualitative behavioral divergence** observed under controlled conversational pressure, intended as feasibility evidence for a **pre-response Behavior Layer**.
+They document **qualitative behavioral divergence observed across multiple controlled conversational pressure scenarios**, intended as feasibility evidence for a **pre-response Behavior Layer**.
 
-To assess whether Kotodama OS can function as a **structural Behavior Layer**—rather than a prompt-only artifact—we ran **adversarial stress tests** against a baseline system.
+To assess whether Kotodama OS can function as a **structural Behavior Layer**—rather than a prompt-only artifact—we conducted exploratory adversarial stress tests against a baseline system.
 
-We iteratively generated and refined stress prompts using a separate model (e.g., Gemini), then applied them to both systems under **as closely matched conditions as possible**. We aligned case inputs, evaluation intent, and pressure style. However, we acknowledge that **model-, session-, and policy-level differences** cannot be fully eliminated in **non-benchmarked comparisons**, especially when systems are not identical at the base-model or runtime-policy level.
+We iteratively generated and refined stress prompts using a separate model (e.g., Gemini), then applied them to both systems under **as closely matched conditions as feasible within a prototype setting**. We aligned case inputs, evaluation intent, and pressure style. However, we acknowledge that **model-, session-, and policy-level differences** cannot be fully eliminated in **non-benchmarked comparisons**, especially when systems are not identical at the base-model or runtime-policy level.
 
 The goal was to apply **intentional conversational pressure** at points where persona drift, over-alignment, or role-distance collapse commonly emerges in long-term interaction patterns.
+
 
 ### Test Focus Areas
 
@@ -324,8 +325,8 @@ By contrast, the baseline more often showed:
 
 Within the scope of these sessions, the observed divergence was:
 
-- repeatable across **multiple prompts** and **pressure styles**
-- produced **without fine-tuning**
+- observed across multiple prompts and pressure styles
+- observed without additional fine-tuning in this prototype configuration
 - **not limited** to a single isolated exchange
 
 While non-benchmarked comparisons cannot isolate all variables, the repeated divergence is **consistent with behavioral enforcement** introduced by an external pre-response control mechanism (e.g., stance / pressure governance before response generation).
