@@ -218,6 +218,7 @@ Application Layer
 
 Kotodama OS fills this vacant seat by providing a **behavioral layer that applications can rely on**, without retraining or modifying base models.
 
+---
 
 ## Application Hypotheses (Exploratory)
 
