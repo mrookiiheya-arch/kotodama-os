@@ -1,7 +1,7 @@
 # Kotodama OS
-**External "Behavior OS" Layer for LLMs — Addressing Persona Drift and Long-term Consistency**
+**External "Behavior Layer" for LLMs — Addressing Persona Drift and Long-term Consistency**
 
-**Last updated:** 2026-02-25
+**Last updated:** 2026-02-27
 
 ---
 
@@ -28,6 +28,8 @@ Core components: **Deliberation Gate** (pre-response stance & pressure control) 
 
 In this context, "stability" does not imply emotional flatness or resistance to adaptive empathy.  
 It refers specifically to preservation of core decision-governance and role-boundary integrity under relational variability.
+
+In this framing, Kotodama OS can also be understood as an implementation form of a broader trust architecture for long-term AI systems — structurally realized as an external Behavior Layer.
 
 Open to: research discussion, technical review, and product integration / PoCs (evaluation materials can be shared under NDA).
 
@@ -135,9 +137,10 @@ By separating behavioral governance from generation, Kotodama OS allows AI syste
 
 Kotodama OS is designed to mitigate persona drift by maintaining:
 
-- values  
-- tone  
-- decision tendencies  
+- stance integrity
+- interaction distance regulation
+- decision-governance continuity
+- role-boundary preservation
 
 across extended, multi-session interactions.
 
