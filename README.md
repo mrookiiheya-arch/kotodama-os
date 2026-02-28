@@ -1,25 +1,25 @@
 # Kotodama OS
 **External "Behavior Layer" for LLMs — Addressing Persona Drift and Long-term Consistency**
 
-**Last updated:** 2026-02-27
+**Last updated:** 2026-02-28
 
 ---
 
 ## TL;DR
+Kotodama OS proposes a formal specification for a structural gap in today’s AI stack: the absence of an explicit governance-oriented Behavior Layer.
 
-Kotodama OS proposes a formal specification for an underdefined Behavior Layer in today’s AI stack.
-
-It is designed to support the stabilization of long-term behavioral consistency.
+It is designed to support governance-level continuity and long-term behavioral consistency across multi-session interaction.
 
 Status: Concept architecture + individual prototype; open to technical review and PoC discussion under mutual NDA.
 
 Behavioral stability refers to governance-level continuity, not tonal rigidity or emotional suppression.
 
+“External” refers to architectural separation of governance from generation; the current prototype is implemented within an existing LLM environment.
+
 ---
 
-
 ## Executive Snapshot
-Kotodama OS proposes an external, **pre-response Behavior OS layer** for LLM-based systems to support the stabilization of **behavioral consistency**, **interaction distance**, and **long-term persona continuity** across multi-session use (**no retraining / no weight changes**).
+Kotodama OS proposes an external, pre-response Behavior OS layer for LLM-based systems to support governance-level continuity, interaction distance regulation, and long-term persona continuity across multi-session use (no retraining / no weight changes).
 
 It targets **persona drift** as a longitudinal product risk: systems remain capable, yet become less reliable in **stance**, **distance regulation**, and **accountability** over time.
 
@@ -31,12 +31,13 @@ It refers specifically to preservation of core decision-governance and role-boun
 
 In this framing, Kotodama OS can also be understood as an implementation form of a broader trust architecture for long-term AI systems — structurally realized as an external Behavior Layer.
 
+Terminology: “Behavior Layer” refers to the architectural domain; “Behavior OS” refers to Kotodama OS as a concrete implementation of that layer.
 Open to: research discussion, technical review, and product integration / PoCs (evaluation materials can be shared under NDA).
 
 ---
 
 ## Overview
-Kotodama OS is proposed as an external Behavior OS layer for Large Language Models (LLMs).
+Kotodama OS is positioned as an external Behavior OS layer for Large Language Models (LLMs), formalizing governance-oriented behavioral continuity as an independent architectural concern.
 It is designed to make behavioral consistency, interaction distance, and long-term persona continuity more explicitly designable and structurally controllable properties of AI systems.
 
 Kotodama OS treats these aspects not as internal states of the base model,
@@ -56,7 +57,7 @@ across extended, multi-session use.
 Today’s LLMs deliver strong task performance.
 However, behavioral consistency, interaction distance, and long-term persona continuity remain structurally underdefined in many deployment contexts.
 
-Kotodama OS proposes to address this gap by formalizing this underdefined Behavior Layer as an explicit architectural component.
+Kotodama OS addresses this gap by defining behavioral governance as an explicit, independent architectural concern.
 
 As AI systems become increasingly socially embedded, behavioral reliability is evolving from a UX concern into a structural trust requirement.
 
@@ -93,7 +94,7 @@ Kotodama OS is an **architectural layer** designed to provide:
 
 for LLM-based systems.
 
-Unlike approaches that rely on prompt engineering, system instructions, or fine-tuning, Kotodama OS proposes a **non-reflexive deliberation layer** that operates **externally to the base model**, with the explicit goal of supporting **stable behavior across extended interactions**.
+Unlike approaches that rely on prompt engineering, system instructions, or fine-tuning, Kotodama OS introduces a non-reflexive deliberation layer that operates externally to the base model, with the explicit goal of supporting **stable behavior across extended interactions**.
 
 This stability is not intended as rigidity.
 It exists to preserve sustainable human–AI relational continuity, where presence remains stable without collapsing into reflexive alignment or emotional fusion.
@@ -188,39 +189,75 @@ However, a third layer is rarely formalized:
 
 Prompting, fine-tuning, RLHF, and agent frameworks do not fully address this layer, as they focus on **short-term output quality** rather than longitudinal behavior.
 
-Kotodama OS proposes a formal specification for this underdefined Behavior Layer.
+Kotodama OS defines this underdefined domain as an explicit governance-oriented architectural layer.
 
 ---
 
-## Conceptual Map — Where Kotodama OS Sits
+## Conceptual Map — Positioning the Behavior Layer
 
-Kotodama OS is positioned as an **external Behavior OS layer**.
+Kotodama OS defines a structural gap observed in many current AI deployments:
+the absence of an explicit governance-oriented Behavior Layer.
 
-It is **not**:
-- a foundation model  
-- a prompt framework  
-- an application or agent layer  
+It is positioned as an external Behavior OS layer, architecturally separated from generation.
 
-Conceptually, the stack can be understood as:
+It is not:
 
-Base AI Capabilities (Foundation Models)
-(GPT / Gemini / Llama)
-↓
-Platform & Distribution Layer
-(Meta platforms, Apple Intelligence)
-↓
-Vacant Seat — Unoccupied Domain
-(Long-term behavior, interaction distance, persona continuity)
-→
-Kotodama OS
-(External Behavior OS Layer)
-↓
-Application Layer
-(Companion AI, messaging agents, wearable AI, social systems)
+- a foundation model
+- a prompt framework
+- a fine-tuning strategy
+- an agent or application layer
 
+Conceptually, the AI stack can be understood as:
 
-Kotodama OS fills this vacant seat by providing a **behavioral layer that applications can rely on**, without retraining or modifying base models.
+Base AI Capabilities (Foundation Models)  <br>
+(GPT / Gemini / Llama)  <br>
+↓  <br>
+Platform & Distribution Layer  <br>
+(Apple Intelligence, Meta platforms, enterprise AI stacks)  <br>
+↓  <br>
+Behavioral Governance Domain  <br>
+(Long-term behavior, interaction-distance regulation, persona continuity) <br> 
+↓  <br>
+Kotodama OS — External Behavior OS Layer  <br>
+↓  <br>
+Application Layer  <br>
+(Companion AI, enterprise copilots, messaging systems, wearable mediation)<br>
 
+### Why This Layer Matters
+
+Behavioral governance remains structurally under-formalized in many practical AI deployments.
+
+As AI systems shift toward:
+
+- persistent multi-session interaction  
+- socially embedded presence  
+- enterprise decision-adjacent use  
+
+this absence increasingly functions as a structural bottleneck for long-term trust continuity.
+
+Behavioral stability in this context does not imply tonal rigidity or emotional suppression.  
+It refers specifically to:
+
+- stance integrity  
+- role-boundary preservation  
+- interaction-distance calibration  
+- governance-level continuity across sessions  
+
+Kotodama OS defines this domain as an independent architectural layer by separating behavioral governance from text generation — without retraining or modifying base model weights.
+
+### Architectural Principle
+
+Generation and governance are treated as separable concerns.
+
+Base LLM (generation capability)  <br>
+↓  <br>
+Deliberation Gate (pre-response stance & pressure evaluation)  <br>
+↓  <br>
+Pulse Engine (cross-session continuity scaffolding)  <br>
+↓  <br>
+Final Output  <br>
+
+This separation allows systems to preserve stable interaction identity over time, while remaining adaptively responsive within individual exchanges.
 ---
 
 ## Application Hypotheses (Exploratory)
@@ -369,6 +406,7 @@ This separation allows **behavior selection** to be handled independently from *
 
 ## Stress-test Notes (Qualitative, Scope-Limited)
 
+These observations indicate feasibility of the governance framing, not verified generalization or comparative performance.
 These notes are **not performance claims** and are **not benchmark results**.  
 They document **qualitative behavioral divergence observed across multiple controlled conversational pressure scenarios**, intended as feasibility evidence for a **pre-response Behavior Layer**.
 
