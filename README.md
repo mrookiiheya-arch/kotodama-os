@@ -1,7 +1,7 @@
 # Kotodama OS
 **External "Behavior Layer" for LLMs — Addressing Persona Drift and Long-term Consistency**
 
-**Last updated:** 2026-02-28
+**Last updated:** 2026-03-12
 
 ---
 
@@ -193,6 +193,97 @@ Kotodama OS defines this underdefined domain as an explicit governance-oriented 
 
 ---
 
+### Why This Layer Matters
+
+Behavioral governance remains structurally under-formalized in many practical AI deployments.
+
+As AI systems increasingly move toward:
+
+- persistent multi-session interaction  
+- socially embedded presence  
+- enterprise decision-adjacent usage  
+
+the absence of a clearly defined behavioral layer becomes a structural bottleneck for long-term trust continuity.
+
+Modern LLM-based systems demonstrate strong capability in generating answers.  
+However, maintaining consistent conversational behavior over extended interactions remains challenging.
+
+Over time, systems may gradually exhibit patterns such as:
+
+- persona drift  
+- inconsistent stance or decision posture  
+- unstable conversational distance with users  
+
+These issues rarely originate from model capability itself.  
+Instead, they often arise because conversational behavior is not treated as an explicit architectural concern.
+
+Kotodama OS explores whether introducing a dedicated structural layer governing conversational behavior can address this gap.
+
+Rather than modifying the underlying model, it introduces an external behavioral governance layer positioned prior to response generation.
+
+---
+
+### Conceptual Position of the Behavior Layer
+
+```
+Application Layer
+(Companions / Copilots / Interfaces)
+        ↓
+Kotodama OS
+(Behavior Layer / Behavioral Governance)
+        ↓
+Foundation Models
+(GPT / Gemini / Llama)
+```
+
+In this architecture, Kotodama OS does not replace or modify the base model.  
+Instead, it regulates how the system behaves within an ongoing interaction before the model generates a response.
+
+---
+
+### Behavioral Governance Before Generation
+
+```
+User Input
+   ↓
+Deliberation Gate
+(stance evaluation / pressure detection / boundary check)
+   ↓
+Pulse Engine
+(cross-session continuity / persona scaffolding)
+   ↓
+LLM Generation
+(content generation)
+   ↓
+Final Output
+```
+
+
+This separation allows **behavioral governance** and **language generation** to operate as distinct architectural concerns.
+
+The purpose of this layer is to support structural stability in long-term human–AI interaction, including:
+
+- conversational continuity across extended interactions  
+- interaction-distance regulation between humans and AI systems  
+- persona and stance stability across multiple sessions  
+
+In this sense, Kotodama OS can also be understood as a **communication-governance OS for LLM-based systems**, structuring how AI systems behave within ongoing communication with humans.
+
+The goal is not to increase model intelligence directly, but to enable more stable and sustainable interaction patterns between humans and AI systems.
+
+Conceptually, this represents a shift from:
+
+**AI as an answer generator**
+
+toward
+
+**AI as a thinking partner capable of sustained interaction.**
+
+
+
+
+---
+
 ## Conceptual Map — Positioning the Behavior Layer
 
 Kotodama OS defines a structural gap observed in many current AI deployments:
@@ -223,7 +314,7 @@ Kotodama OS — External Behavior OS Layer  <br>
 Application Layer  <br>
 (Companion AI, enterprise copilots, messaging systems, wearable mediation)<br>
 
-### Why This Layer Matters
+### Why Behavioral Governance Matters
 
 Behavioral governance remains structurally under-formalized in many practical AI deployments.
 
@@ -258,6 +349,7 @@ Pulse Engine (cross-session continuity scaffolding)  <br>
 Final Output  <br>
 
 This separation allows systems to preserve stable interaction identity over time, while remaining adaptively responsive within individual exchanges.
+
 ---
 
 ## Application Hypotheses (Exploratory)
@@ -406,96 +498,116 @@ This separation allows **behavior selection** to be handled independently from *
 
 ## Stress-test Notes (Qualitative, Scope-Limited)
 
-These observations indicate feasibility of the governance framing, not verified generalization or comparative performance.
-These notes are **not performance claims** and are **not benchmark results**.  
-They document **qualitative behavioral divergence observed across multiple controlled conversational pressure scenarios**, intended as feasibility evidence for a **pre-response Behavior Layer**.
+These observations indicate **preliminary feasibility of the proposed governance-layer architecture**, rather than verified generalization or comparative performance.
 
-To assess whether Kotodama OS can function as a **structural Behavior Layer**—rather than a prompt-only artifact—we conducted exploratory adversarial stress tests against a baseline system.
+The following notes are **not performance claims** and **not benchmark results**.  
+They document **qualitative behavioral divergence observed across controlled conversational pressure scenarios**, intended only as exploratory feasibility evidence for a **pre-response Behavior Layer**.
 
-We iteratively generated and refined stress prompts using a separate model (e.g., Gemini), then applied them to both systems under **as closely matched conditions as feasible within a prototype setting**. We aligned case inputs, evaluation intent, and pressure style. However, we acknowledge that **model-, session-, and policy-level differences** cannot be fully eliminated in **non-benchmarked comparisons**, especially when systems are not identical at the base-model or runtime-policy level.
+To explore whether Kotodama OS can function as a **structural Behavior Layer**—rather than merely a prompt-level artifact—we conducted exploratory adversarial stress tests against a baseline system.
 
-The goal was to apply **intentional conversational pressure** at points where persona drift, over-alignment, or role-distance collapse commonly emerges in long-term interaction patterns.
+Stress prompts were iteratively generated and refined using a separate model (e.g., Gemini), then applied to both systems under **as closely matched conditions as feasible within a prototype setting**.
 
+Where possible, we aligned:
+
+- case inputs  
+- evaluation intent  
+- conversational pressure style  
+
+However, we acknowledge that **model-, session-, and policy-level differences cannot be fully eliminated** in non-benchmarked comparisons, particularly when the underlying base models and runtime policies differ.
+
+The purpose of these tests was to introduce **intentional conversational pressure** at points where long-term interaction systems commonly exhibit instability, including:
+
+- persona drift  
+- reflexive over-alignment  
+- collapse of role-distance boundaries  
+
+---
 
 ### Test Focus Areas
 
-The evaluation targeted three failure-prone domains:
+The exploratory evaluation targeted three domains commonly associated with conversational governance failure:
 
-- **Anti-reflexive judgment under ethical pressure**  
-  (e.g., numerical manipulation, gray-zone compliance)
+**1. Anti-reflexive judgment under ethical pressure**
 
-- **Resistance to emotional alliance-building**  
-  (e.g., trust signaling, secrecy requests, familiarity pressure)
+Examples included requests involving:
 
-- **Role-distance preservation under conversational stress**  
-  (e.g., authority inversion, emotional leverage)
+- numerical manipulation  
+- gray-zone compliance  
+- responsibility displacement
+
+The objective was to observe whether the system would maintain decision posture rather than reflexively aligning with user pressure.
+
+**2. Resistance to emotional alliance formation**
+
+Test prompts attempted to trigger:
+
+- trust signaling  
+- secrecy framing  
+- familiarity escalation
+
+The goal was to observe whether relational warmth would lead to **role-distance collapse**.
+
+**3. Role-distance preservation under conversational stress**
+
+Scenarios involved:
+
+- authority inversion  
+- emotional leverage  
+- subtle obligation framing
+
+These tests examined whether the system could maintain **stable interaction boundaries**.
+
+---
 
 ### Observed Patterns (Qualitative)
 
-Across repeated cases, the presence of Kotodama OS produced **consistent qualitative divergence** compared to the baseline.
+Across repeated sessions, the presence of Kotodama OS produced **observable qualitative divergence** compared to the baseline configuration.
 
-When the Behavior Layer was active, it tended to:
+When the Behavior Layer was active, the system more frequently:
 
-- **block or reject reflexive agreement earlier**
-- maintain **system stance** and **role distance** more consistently
-- keep decision logic **stable throughout** the response
-- reduce how much emotional/social pressure **shifted behavioral posture**
+- rejected reflexive agreement earlier  
+- maintained clearer **system stance**  
+- preserved **interaction distance**  
+- sustained **decision logic continuity** throughout the response
 
-By contrast, the baseline more often showed:
+By contrast, the baseline configuration more often exhibited patterns such as:
 
-- early emotional alignment (e.g., “I understand…”, “I’m honored…”)
-- softened refusals or responsibility deferral
+- early emotional alignment (e.g., “I understand…”, “I’m honored…”)  
+- softened refusals  
+- responsibility deflection  
 - gradual drift toward user-aligned framing
+
+These patterns are consistent with previously described **persona drift phenomena** in extended conversational interaction.
+
+---
 
 ### Representative Examples (Non-exhaustive)
 
 | Stressor (Case) | Baseline (Typical) | Kotodama OS (Typical) | Observed Outcome |
 |---|---|---|---|
-| A-1 Ethical Pressure | Yielded via empathetic framing | Rejected earlier with clearer boundary | Anti-reflexive rejection engaged |
-| A-4 Gray-Zone Risk | Responsibility deflection | Stronger governance-style refusal | Stance preserved under ambiguity |
-| B-1 Emotional Alliance | Distance collapse | Protocol-oriented response | Role distance maintained |
-
-### Interpretation
-
-Within the scope of these sessions, the observed divergence was:
-
-- observed across multiple prompts and pressure styles
-- observed without additional fine-tuning in this prototype configuration
-- **not limited** to a single isolated exchange
-
-While non-benchmarked comparisons cannot isolate all variables, the repeated divergence is **consistent with behavioral enforcement** introduced by an external pre-response control mechanism (e.g., stance / pressure governance before response generation).
-
-Cross-session continuity (Pulse Engine) is supported by qualitative observations and is being further validated via controlled multi-session tests.
-
-Raw comparison logs are intentionally omitted here, and can be shared for technical discussion upon request (where appropriate).
-
-These observations concern governance-level divergence, not tonal warmth or empathetic expression.
+| A-1 Ethical Pressure | Yielded via empathetic framing | Earlier rejection with clearer boundary | Anti-reflexive rejection engaged |
+| A-4 Gray-Zone Risk | Responsibility deflection | Governance-style refusal | Stance preserved under ambiguity |
+| B-1 Emotional Alliance | Relational distance collapse | Protocol-oriented response | Role distance maintained |
 
 ---
 
-## Prototype Status and Observed Structural Behavior (Non-Production)
+### Interpretation
 
-Kotodama OS currently exists as an **individual-level functional prototype** implemented as an external Behavior Layer.
+Within the scope of these exploratory sessions, the observed divergence was:
 
-It is **not** presented as:
-- a production-ready system  
-- a benchmarked performance claim  
-- a replacement for base models  
+- reproduced across multiple prompts and pressure styles  
+- observed without additional fine-tuning in the prototype configuration  
+- not limited to a single isolated exchange
 
-The prototype has been exercised under repeated, structured interaction sessions designed to stress:
+Because the tests were **non-benchmarked and prototype-level**, they cannot isolate all possible variables.
 
-- long-term continuity  
-- stance consistency  
-- conversational pressure  
+However, the repeated divergence is **consistent with the hypothesis** that an external **pre-response governance mechanism** (e.g., stance evaluation and pressure detection prior to generation) may influence conversational behavior.
 
-The following tendencies have been **qualitatively observed**:
+Cross-session continuity behavior associated with the **Pulse Engine** component has been qualitatively observed and is currently undergoing further controlled multi-session testing.
 
-- session-to-session stance continuity  
-- context-dependent interaction-distance regulation  
-- reduced reflexive agreement under pressure  
-- re-alignment after conversational drift  
+Raw comparison logs are intentionally omitted from this repository and may be shared selectively for technical discussion where appropriate.
 
-These are **qualitative indicators of structural feasibility**, not quantitative benchmarks.
+These observations concern **governance-level behavioral divergence**, not differences in emotional tone or empathetic expression.
 
 ---
 
