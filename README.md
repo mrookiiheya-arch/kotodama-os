@@ -1,7 +1,7 @@
 # Kotodama OS
 **External "Behavior Layer" for LLMs — Addressing Persona Drift and Long-term Consistency**
 
-**Last updated:** 2026-03-12
+**Last updated:** 2026-03-17
 
 ---
 
@@ -57,7 +57,8 @@ across extended, multi-session use.
 Today’s LLMs deliver strong task performance.
 However, behavioral consistency, interaction distance, and long-term persona continuity remain structurally underdefined in many deployment contexts.
 
-Kotodama OS addresses this gap by defining behavioral governance as an explicit, independent architectural concern.
+Kotodama OS explores this gap by proposing behavioral governance as an explicit, independent architectural concern,  
+as part of an ongoing investigation into long-term interaction stability.
 
 As AI systems become increasingly socially embedded, behavioral reliability is evolving from a UX concern into a structural trust requirement.
 
@@ -67,6 +68,48 @@ It functions as the foundation for sustainable human–AI relational continuity.
 Persona drift, as defined here, refers to governance instability and erosion of role-boundaries across sessions — not to adaptive tonal variation or context-sensitive empathy.
 
 Accordingly, the objective is not rigidity, but the preservation of stable interaction identity over time.
+
+---
+## Hypothesis-Oriented Framing: Behavioral Consistency
+
+In the course of exploratory observation within this project,  
+certain behavioral patterns have been noted in LLM-based systems under extended interaction conditions.
+
+These observations are not intended as general claims about all models,  
+but as context-specific tendencies observed in limited settings.
+
+Examples include:
+
+- Behavioral variation over the course of ongoing conversations  
+- Sensitivity to user pressure or conversational framing in certain scenarios  
+- Apparent shifts in decision criteria or interaction distance across sessions  
+
+Kotodama OS is based on the hypothesis that  
+treating **decision-making criteria (stance)** as an externally structured layer—  
+rather than attempting to control surface-level behavior directly—  
+
+may:
+
+- support more consistent interaction patterns over time  
+- enable more stable handling of interaction distance and relational dynamics  
+- reduce variability in behavior across multi-session use  
+
+This approach does not aim to reproduce fixed personas or predefined character settings.
+
+Instead, it explores whether separating  
+**the process of decision-making** from **the act of generation**  
+
+may allow flexibility and consistency to coexist within LLM-based systems.
+
+From an intuitive perspective,  
+conventional approaches may resemble providing a strict recipe to a skilled chef.
+
+In contrast, this approach attempts to define  
+the **direction and intent of the experience**,  
+
+while allowing the underlying model to determine the specific realization.
+
+This distinction may contribute to achieving both adaptability and continuity in interaction.
 
 ---
 
