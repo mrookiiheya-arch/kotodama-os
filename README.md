@@ -1,732 +1,733 @@
 # Kotodama OS
-**External "Behavior Layer" for LLMs — Addressing Persona Drift and Long-term Consistency**
 
-**Last updated:** 2026-03-17
+**A Behavior Layer for Long-term AI Interaction**
+*Governance for persona continuity, interaction distance, and behavioral stability in LLM-based systems*
+
+**Last updated:** 2026-06-14
 
 ---
 
 ## TL;DR
-Kotodama OS proposes a formal specification for a structural gap in today’s AI stack: the absence of an explicit governance-oriented Behavior Layer.
 
-It is designed to support governance-level continuity and long-term behavioral consistency across multi-session interaction.
+Kotodama OS is a concept architecture for an external **Behavior Layer** in LLM-based systems.
 
-Status: Concept architecture + individual prototype; open to technical review and PoC discussion under mutual NDA.
+It explores a structural gap in long-term human-AI interaction:
 
-Behavioral stability refers to governance-level continuity, not tonal rigidity or emotional suppression.
+> how an AI system may maintain behavioral continuity, role boundaries, interaction distance, and stance integrity across sessions.
 
-“External” refers to architectural separation of governance from generation; the current prototype is implemented within an existing LLM environment.
+Modern AI systems increasingly combine foundation models, tools, agents, orchestration frameworks, memory, and enterprise governance. However, the governance of **relational behavior** appears to remain under-formalized as an independent architectural concern.
 
----
+Kotodama OS explores this gap by separating **behavioral governance** from **language generation**.
 
-## Executive Snapshot
-Kotodama OS proposes an external, pre-response Behavior OS layer for LLM-based systems to support governance-level continuity, interaction distance regulation, and long-term persona continuity across multi-session use (no retraining / no weight changes).
+It is intended to support:
 
-It targets **persona drift** as a longitudinal product risk: systems remain capable, yet become less reliable in **stance**, **distance regulation**, and **accountability** over time.
+* long-term behavioral consistency
+* persona continuity across sessions
+* interaction-distance regulation
+* stance and role-boundary preservation
+* resistance to reflexive over-alignment
+* behavioral governance before generation
 
-Core components: **Deliberation Gate** (pre-response stance & pressure control) + **Pulse Engine** (continuity scaffolding across sessions).  
-(Status: **Concept & Architecture + individual prototype**; non-production; not benchmarked.)
+Kotodama OS does **not** require model retraining, fine-tuning, or weight modification.
 
-In this context, "stability" does not imply emotional flatness or resistance to adaptive empathy.  
-It refers specifically to preservation of core decision-governance and role-boundary integrity under relational variability.
-
-In this framing, Kotodama OS can also be understood as an implementation form of a broader trust architecture for long-term AI systems — structurally realized as an external Behavior Layer.
-
-Terminology: “Behavior Layer” refers to the architectural domain; “Behavior OS” refers to Kotodama OS as a concrete implementation of that layer.
-Open to: research discussion, technical review, and product integration / PoCs (evaluation materials can be shared under NDA).
-
----
-
-## Overview
-Kotodama OS is positioned as an external Behavior OS layer for Large Language Models (LLMs), formalizing governance-oriented behavioral continuity as an independent architectural concern.
-It is designed to make behavioral consistency, interaction distance, and long-term persona continuity more explicitly designable and structurally controllable properties of AI systems.
-
-Kotodama OS treats these aspects not as internal states of the base model,
-but as an architectural layer positioned outside the model itself.
-In its current prototype form, it does not rely on model retraining or modification of model weights.
-
-This work is grounded in observing recurring patterns in long-term human interaction—
-such as trust formation, distance regulation, and drift under pressure—
-and organizing them as observable behavioral characteristics.
-
-By decomposing these characteristics and reconstituting them as controllable aspects of AI behavior,
-Kotodama OS defines and structurally addresses what is described here as an underdefined behavior layer.
-
-This framework is intended to support AI systems in maintaining behavioral stability and consistent interaction patterns
-across extended, multi-session use.
-
-Today’s LLMs deliver strong task performance.
-However, behavioral consistency, interaction distance, and long-term persona continuity remain structurally underdefined in many deployment contexts.
-
-Kotodama OS explores this gap by proposing behavioral governance as an explicit, independent architectural concern,  
-as part of an ongoing investigation into long-term interaction stability.
-
-As AI systems become increasingly socially embedded, behavioral reliability is evolving from a UX concern into a structural trust requirement.
-
-In this context, behavioral stability is not an end in itself.
-It functions as the foundation for sustainable human–AI relational continuity.
-
-Persona drift, as defined here, refers to governance instability and erosion of role-boundaries across sessions — not to adaptive tonal variation or context-sensitive empathy.
-
-Accordingly, the objective is not rigidity, but the preservation of stable interaction identity over time.
-
----
-## Hypothesis-Oriented Framing: Behavioral Consistency
-
-In the course of exploratory observation within this project,  
-certain behavioral patterns have been noted in LLM-based systems under extended interaction conditions.
-
-These observations are not intended as general claims about all models,  
-but as context-specific tendencies observed in limited settings.
-
-Examples include:
-
-- Behavioral variation over the course of ongoing conversations  
-- Sensitivity to user pressure or conversational framing in certain scenarios  
-- Apparent shifts in decision criteria or interaction distance across sessions  
-
-Kotodama OS is based on the hypothesis that  
-treating **decision-making criteria (stance)** as an externally structured layer—  
-rather than attempting to control surface-level behavior directly—  
-
-may:
-
-- support more consistent interaction patterns over time  
-- enable more stable handling of interaction distance and relational dynamics  
-- reduce variability in behavior across multi-session use  
-
-This approach does not aim to reproduce fixed personas or predefined character settings.
-
-Instead, it explores whether separating  
-**the process of decision-making** from **the act of generation**  
-
-may allow flexibility and consistency to coexist within LLM-based systems.
-
-From an intuitive perspective,  
-conventional approaches may resemble providing a strict recipe to a skilled chef.
-
-In contrast, this approach attempts to define  
-the **direction and intent of the experience**,  
-
-while allowing the underlying model to determine the specific realization.
-
-This distinction may contribute to achieving both adaptability and continuity in interaction.
+| Item              | Status                                                                              |
+| ----------------- | ----------------------------------------------------------------------------------- |
+| Project stage     | Concept Architecture + Exploratory Prototype                                        |
+| Production status | Non-production / not benchmarked                                                    |
+| Deployment status | Not independently deployed as middleware                                            |
+| Collaboration     | Open to research discussion, technical review, and PoC exploration under mutual NDA |
 
 ---
 
-## Implementation Scope (Clarification)
+## 1. The Problem: Persona Drift
 
-At its current stage, Kotodama OS exists as a structural orchestration prototype implemented within an existing LLM environment.
-“External” refers to architectural separation of behavioral governance from generation, not necessarily a physically separate runtime service in the current prototype.
-It is not (yet) an independently deployed middleware/runtime service.
+Persona drift is often misunderstood as a change in tone.
 
-The prototype does not rely on model retraining or weight modification.
-Instead, it explores how behavioral governance and longitudinal consistency can be structured at an architectural level prior to response generation.
+In this project, persona drift does **not** mean that an AI becomes warmer, colder, more casual, or more formal.
 
-Future implementation is conceptually aligned with an orchestration-layer integration approach.
-Specific control logic, parameterization, and implementation details remain proprietary.
+Persona drift refers to a potential loss of stable behavioral governance over time, including:
 
----
+* weakened stance
+* unstable decision posture
+* role-boundary erosion
+* excessive agreement with user framing
+* collapse of interaction distance
+* reduced accountability in long-term interaction
 
-## The Core Achievement
+A system may still sound helpful, safe, or emotionally aligned while becoming less reliable in how it maintains its role, boundaries, and decision logic across sessions.
 
-Kotodama OS is an **architectural layer** designed to provide:
+This issue may become more important as AI systems move from single-session assistants toward:
 
-- behavioral consistency  
-- intentional interaction control  
-- long-term persona continuity  
+* long-running copilots
+* customer-facing agents
+* companion-style AI
+* enterprise decision-support systems
+* messaging agents
+* always-on wearable or ambient AI
 
-for LLM-based systems.
+In these contexts, the key question is no longer only:
 
-Unlike approaches that rely on prompt engineering, system instructions, or fine-tuning, Kotodama OS introduces a non-reflexive deliberation layer that operates externally to the base model, with the explicit goal of supporting **stable behavior across extended interactions**.
+> Can the AI generate a good answer?
 
-This stability is not intended as rigidity.
-It exists to preserve sustainable human–AI relational continuity, where presence remains stable without collapsing into reflexive alignment or emotional fusion.
+but also:
 
-Crucially, Kotodama OS distinguishes between adaptive relational calibration and governance-level collapse.  
-While emotional engagement and tonal warmth may vary across contexts, core stance continuity and decision-governance integrity are preserved.
-
----
-
-## Governance vs Tone (Clarification)
-
-Kotodama OS does not aim to suppress empathy or emotional alignment.
-
-It distinguishes between:
-
-- Adaptive relational calibration (allowed)
-- Governance-level reflexive collapse (restricted)
-
-Tonal warmth may vary across contexts.
-Core stance integrity does not.
+> Can the AI maintain a stable way of behaving over time?
 
 ---
 
-## No Retraining Required
+## 2. The Missing Layer in the AI Stack
 
-Kotodama OS does **not** modify model weights or internal architecture.
+Most LLM-based systems can be described through two major layers:
 
-Instead, it functions as an **external control layer** that governs:
+```text
+Model Layer
+Foundation models responsible for knowledge, reasoning, and generation.
 
-- behavioral consistency  
-- interaction flow  
-- response temperature (distance / tone)
-
-These properties are difficult to achieve reliably through prompting or fine-tuning alone, which typically optimize for **single-session performance**, not longitudinal consistency.
-
-By separating behavioral governance from generation, Kotodama OS allows AI systems to maintain relational stability without sacrificing adaptability.
-
----
-
-## Reduces Persona Drift (Design Goal)
-
-Kotodama OS is designed to mitigate persona drift by maintaining:
-
-- stance integrity
-- interaction distance regulation
-- decision-governance continuity
-- role-boundary preservation
-
-across extended, multi-session interactions.
-
-Persona drift is treated not as a single bug, but as a **structural failure mode** caused by the absence of an explicit behavior layer.
-
----
-
-## Intentional Design
-
-Kotodama OS moves beyond reactive text generation.
-
-Its design goal is to enable **intentional conversational behavior**, where responses are selected through structured deliberation rather than reflexive generation.
-
----
-
-## Demos (Core Behavior Implementation)
-
-These demos illustrate the Kotodama OS concept applied to conversational agents, focusing on **behavioral stability rather than raw model capability**.
-
-- **Demo #01 — Multi-Persona Contextual Reasoning (k / hoto / ame / bis)**  
-  https://youtu.be/bCHD12xCJ98
-
-- **Demo #02 — Calorie Reasoning from Food Logs**  
-  https://youtu.be/CHQuxuh2io4
-
-- **Demo #03 — Business Reasoning in Natural Conversation**  
-  https://youtu.be/BsA57PhpkrM
-
----
-
-## Underdefined Layer in Today’s AI Stack
-
-Modern LLM-based systems typically define two layers:
-
-1. **Model Layer**  
-   Foundation models responsible for knowledge and generation.
-
-2. **Agent Layer**  
-   Tools, planning, orchestration, and delegation frameworks.
-
-However, a third layer is rarely formalized:
-
-3. **Behavior Layer**  
-   Responsible for persona continuity, interaction-distance regulation, and long-term relational stability.
-
-Prompting, fine-tuning, RLHF, and agent frameworks do not fully address this layer, as they focus on **short-term output quality** rather than longitudinal behavior.
-
-Kotodama OS defines this underdefined domain as an explicit governance-oriented architectural layer.
-
----
-
-### Why This Layer Matters
-
-Behavioral governance remains structurally under-formalized in many practical AI deployments.
-
-As AI systems increasingly move toward:
-
-- persistent multi-session interaction  
-- socially embedded presence  
-- enterprise decision-adjacent usage  
-
-the absence of a clearly defined behavioral layer becomes a structural bottleneck for long-term trust continuity.
-
-Modern LLM-based systems demonstrate strong capability in generating answers.  
-However, maintaining consistent conversational behavior over extended interactions remains challenging.
-
-Over time, systems may gradually exhibit patterns such as:
-
-- persona drift  
-- inconsistent stance or decision posture  
-- unstable conversational distance with users  
-
-These issues rarely originate from model capability itself.  
-Instead, they often arise because conversational behavior is not treated as an explicit architectural concern.
-
-Kotodama OS explores whether introducing a dedicated structural layer governing conversational behavior can address this gap.
-
-Rather than modifying the underlying model, it introduces an external behavioral governance layer positioned prior to response generation.
-
----
-
-### Conceptual Position of the Behavior Layer
-
-```
-Application Layer
-(Companions / Copilots / Interfaces)
-        ↓
-Kotodama OS
-(Behavior Layer / Behavioral Governance)
-        ↓
-Foundation Models
-(GPT / Gemini / Llama)
+Agent Layer
+Tools, planning, orchestration, delegation, and task execution.
 ```
 
-In this architecture, Kotodama OS does not replace or modify the base model.  
-Instead, it regulates how the system behaves within an ongoing interaction before the model generates a response.
+Kotodama OS proposes that a third layer should be treated as an independent architectural concern:
+
+```text
+Behavior Layer
+Governance of persona continuity, interaction distance,
+stance integrity, and long-term relational stability.
+```
+
+This layer is not the same as model capability, prompt design, fine-tuning, tool use, memory, or workflow orchestration.
+
+It concerns how an AI system behaves in relation to humans over time.
+
+In this framing, Kotodama OS is proposed as one possible implementation form of a broader **relational behavior-governance layer** for LLM-based systems.
 
 ---
 
-### Behavioral Governance Before Generation
+## 3. What Kotodama OS Is
 
+Kotodama OS is a concept architecture for an external Behavior Layer positioned before response generation.
+
+It is intended to regulate behavioral conditions within an ongoing interaction before the base model generates the final output.
+
+Conceptually:
+
+```text
+User Input
+   ↓
+Behavior Layer
+   ↓
+LLM Generation
+   ↓
+Final Output
 ```
+
+More specifically:
+
+```text
 User Input
    ↓
 Deliberation Gate
-(stance evaluation / pressure detection / boundary check)
    ↓
 Pulse Engine
-(cross-session continuity / persona scaffolding)
    ↓
 LLM Generation
-(content generation)
    ↓
 Final Output
 ```
 
+The goal is not to replace the base model.
 
-This separation allows **behavioral governance** and **language generation** to operate as distinct architectural concerns.
+The goal is to separate **behavioral governance** from **language generation**, with the aim of making long-term interaction more stable, bounded, and trustworthy.
 
-The purpose of this layer is to support structural stability in long-term human–AI interaction, including:
-
-- conversational continuity across extended interactions  
-- interaction-distance regulation between humans and AI systems  
-- persona and stance stability across multiple sessions  
-
-In this sense, Kotodama OS can also be understood as a **communication-governance OS for LLM-based systems**, structuring how AI systems behave within ongoing communication with humans.
-
-The goal is not to increase model intelligence directly, but to enable more stable and sustainable interaction patterns between humans and AI systems.
-
-Conceptually, this represents a shift from:
-
-**AI as an answer generator**
-
-toward
-
-**AI as a thinking partner capable of sustained interaction.**
-
-
-
+Kotodama OS treats behavioral reliability as a structural trust requirement, not merely a tone-of-voice or UX preference.
 
 ---
 
-## Conceptual Map — Positioning the Behavior Layer
+## 4. What Kotodama OS Is Not
 
-Kotodama OS defines a structural gap observed in many current AI deployments:
-the absence of an explicit governance-oriented Behavior Layer.
+Kotodama OS is not:
 
-It is positioned as an external Behavior OS layer, architecturally separated from generation.
+* a foundation model
+* a prompt collection
+* a chatbot character setting
+* a fine-tuning method
+* an RLHF replacement
+* an agent framework
+* a tool-use orchestration layer
+* a psychological user-profiling system
+* a production-ready middleware service in its current form
 
-It is not:
+The current prototype is implemented within an existing LLM environment.
 
-- a foundation model
-- a prompt framework
-- a fine-tuning strategy
-- an agent or application layer
-
-Conceptually, the AI stack can be understood as:
-
-Base AI Capabilities (Foundation Models)  <br>
-(GPT / Gemini / Llama)  <br>
-↓  <br>
-Platform & Distribution Layer  <br>
-(Apple Intelligence, Meta platforms, enterprise AI stacks)  <br>
-↓  <br>
-Behavioral Governance Domain  <br>
-(Long-term behavior, interaction-distance regulation, persona continuity) <br> 
-↓  <br>
-Kotodama OS — External Behavior OS Layer  <br>
-↓  <br>
-Application Layer  <br>
-(Companion AI, enterprise copilots, messaging systems, wearable mediation)<br>
-
-### Why Behavioral Governance Matters
-
-Behavioral governance remains structurally under-formalized in many practical AI deployments.
-
-As AI systems shift toward:
-
-- persistent multi-session interaction  
-- socially embedded presence  
-- enterprise decision-adjacent use  
-
-this absence increasingly functions as a structural bottleneck for long-term trust continuity.
-
-Behavioral stability in this context does not imply tonal rigidity or emotional suppression.  
-It refers specifically to:
-
-- stance integrity  
-- role-boundary preservation  
-- interaction-distance calibration  
-- governance-level continuity across sessions  
-
-Kotodama OS defines this domain as an independent architectural layer by separating behavioral governance from text generation — without retraining or modifying base model weights.
-
-### Architectural Principle
-
-Generation and governance are treated as separable concerns.
-
-Base LLM (generation capability)  <br>
-↓  <br>
-Deliberation Gate (pre-response stance & pressure evaluation)  <br>
-↓  <br>
-Pulse Engine (cross-session continuity scaffolding)  <br>
-↓  <br>
-Final Output  <br>
-
-This separation allows systems to preserve stable interaction identity over time, while remaining adaptively responsive within individual exchanges.
+“External” refers to the architectural separation of behavioral governance from generation. It does not mean that the current prototype is already deployed as an independent runtime service.
 
 ---
 
-## Application Hypotheses (Exploratory)
+## 5. Core Principle
 
-The following contexts represent exploratory hypotheses regarding where an external Behavior Layer may provide structural value.
+Generation and governance should be treated as separable concerns.
 
-These are not deployment claims.  
-They reflect conceptual alignment based on prototype-level experimentation and structural analysis.
+LLMs are strong at generating language. Agent frameworks are increasingly strong at tool use, planning, and execution.
 
----
+However, long-term human-facing AI systems may require additional structure around questions such as:
 
-### 1. Cross-Cultural & Context-Sensitive Translation
+* when to align
+* when not to align
+* how much emotional distance to maintain
+* when to reinforce a boundary
+* how to preserve stance across sessions
+* how to remain adaptive without collapsing into the user’s framing
 
-In multilingual environments, semantic translation alone is often insufficient.
+Kotodama OS explores whether separating behavioral decision-making from generation may allow adaptability and continuity to coexist.
 
-An external Behavior Layer may contribute to:
+A useful analogy:
 
-- stance preservation across languages  
-- relational-distance calibration  
-- cultural tone adjustment  
-- prevention of unintended over-softening or escalation  
+Conventional approaches often resemble giving a strict recipe to a skilled chef.
 
-This may be particularly relevant in:
-- global social platforms  
-- cross-border enterprise communication  
-- real-time wearable translation systems  
-
-The hypothesis is that governance-level calibration can reduce relational distortion introduced during translation.
+Kotodama OS attempts to define the intent, constraints, and direction of the experience, while allowing the underlying model to determine the specific expression.
 
 ---
 
-### 2. Long-Running Companion & Relational AI
+## 6. Behavioral Stability Does Not Mean Rigidity
 
-In persistent interaction systems, behavioral drift may gradually erode trust.
+Kotodama OS does not aim to suppress empathy, warmth, or contextual adaptation.
 
-A Behavior Layer may support:
+Behavioral stability here means governance-level continuity.
 
-- stable interaction identity  
-- resistance to emotional over-alignment  
-- calibrated relational distance over time  
-- recovery after conversational drift  
+It refers to the preservation of:
 
-The hypothesis is that structural governance prior to generation can improve long-term relational sustainability.
+* core stance
+* role-boundary integrity
+* interaction-distance calibration
+* decision-governance consistency
 
----
+under relational variability.
 
-### 3. Enterprise Copilots & Decision-Support Systems
+In other words:
 
-In enterprise contexts, AI systems may encounter:
+```text
+Tonal warmth may vary.
+Core stance integrity should not collapse.
+```
 
-- authority pressure  
-- gray-zone compliance requests  
-- responsibility ambiguity  
+The objective is not emotional flatness.
 
-An external governance layer may contribute to:
-
-- earlier boundary reinforcement  
-- reduced reflexive alignment under pressure  
-- clearer decision posture continuity  
-
-The hypothesis is that governance-layer separation can improve behavioral reliability in decision-adjacent contexts.
+The objective is sustainable human-AI relational continuity.
 
 ---
 
-### 4. Always-On Wearable AI Mediation
+## 7. Architecture
 
-Persistent real-world AI mediation (e.g., AR glasses) introduces new relational dynamics:
+A simplified conceptual architecture:
 
-- over-reliance  
-- confirmation bias amplification  
-- erosion of interpersonal distance  
+```text
+Application Layer
+Companions / Copilots / Interfaces / Messaging Systems
+        ↓
+Kotodama OS
+Behavior Layer / Relational Behavior Governance
+        ↓
+Foundation Models
+GPT / Gemini / Claude / Llama / other LLMs
+```
+
+Kotodama OS does not replace the foundation model.
+
+It is intended to regulate the behavioral conditions under which generation occurs.
+
+---
+
+## 8. Behavioral Governance Before Generation
+
+```text
+User Input
+   ↓
+Deliberation Gate
+stance evaluation / pressure detection / boundary check
+   ↓
+Pulse Engine
+cross-session continuity / persona scaffolding
+   ↓
+LLM Generation
+content generation
+   ↓
+Final Output
+```
+
+This architecture separates two functions that are often merged in conventional LLM interaction:
+
+```text
+Behavior Selection
+How should the system behave in this interaction?
+
+Language Generation
+What should the system say?
+```
+
+By separating these concerns, Kotodama OS aims to reduce governance-level instability over time.
+
+---
+
+## 9. Core Mechanisms
+
+Kotodama OS introduces two core conceptual mechanisms.
+
+Detailed implementation logic, parameterization, and control methods are not included in this public repository.
+
+---
+
+### 9.1 Deliberation Gate
+
+The Deliberation Gate is a pre-response control layer.
+
+It is intended to evaluate the interaction before generation, including:
+
+* stance requirements
+* pressure signals
+* boundary conditions
+* authority inversion
+* emotional leverage
+* gray-zone compliance risk
+* role-distance collapse risk
+
+Its purpose is to reduce the risk of reflexive generation becoming reflexive alignment.
+
+The Deliberation Gate asks, in effect:
+
+```text
+What stance should the system preserve before it answers?
+```
+
+This is intended to help the system maintain a more stable decision posture under conversational pressure.
+
+---
+
+### 9.2 Pulse Engine
+
+The Pulse Engine is a continuity scaffolding mechanism.
+
+It is intended to support behavioral continuity across sessions by preserving:
+
+* persona scaffolding
+* interaction distance
+* role boundaries
+* intent alignment
+* long-term conversational stance
+
+Its purpose is not to create a fixed character.
+
+Rather, it aims to help maintain a stable interaction identity over time while allowing the system to adapt to local context.
+
+The Pulse Engine asks, in effect:
+
+```text
+How should this response remain continuous with the system’s long-term behavioral identity?
+```
+
+Together, the Deliberation Gate and Pulse Engine form the conceptual core of Kotodama OS.
+
+---
+
+## 10. Input and Output Scope
+
+Kotodama OS can be understood as evaluating interaction context before final response generation.
+
+Potential inputs include:
+
+```text
+- user message
+- current session context
+- long-term interaction context
+- role / persona definition
+- prior behavioral commitments
+- pressure or escalation signals
+- boundary conditions
+```
+
+Potential behavioral outputs include:
+
+```text
+- stance directive
+- distance calibration
+- response constraints
+- boundary reinforcement
+- refusal / continuation policy
+- escalation or handoff recommendation
+- tone range
+- continuity requirements
+```
+
+These outputs are not necessarily user-visible. They may function as internal behavioral directives that shape the final response.
+
+---
+
+## 11. Why This Matters
+
+As AI systems become more socially embedded, behavioral reliability becomes a product-level trust issue.
+
+This may be especially important for systems involving:
+
+* persistent multi-session interaction
+* emotionally sensitive use
+* enterprise decision-adjacent contexts
+* customer-facing brand communication
+* always-on AI mediation
+* companion-style AI
+* cross-cultural communication
+
+In these environments, the system’s behavior over time matters as much as its single-response capability.
+
+A capable system that gradually loses stance, boundaries, or interaction distance may remain impressive while becoming less trustworthy.
+
+Kotodama OS treats this as a structural product risk.
+
+---
+
+## 12. Application Hypotheses
+
+The following are exploratory hypotheses regarding where an external Behavior Layer may provide value.
+
+These are not deployment claims.
+
+They represent conceptual alignment based on prototype-level experimentation and structural analysis.
+
+---
+
+### 12.1 Long-running Companion-style AI
+
+Persistent companion-style systems may require more than warmth and memory.
+
+They also require stable relational boundaries and safeguards against excessive emotional over-alignment.
 
 A Behavior Layer may help maintain:
 
-- calibrated intervention thresholds  
-- stance continuity  
-- relational balance in continuous-use environments  
+* stable interaction identity
+* resistance to emotional over-alignment
+* calibrated relational distance
+* recovery after conversational drift
+* continuity across sessions
 
-This remains a forward-looking hypothesis aligned with emerging always-on AI systems.
-
----
-
-These application areas are presented as structured hypotheses rather than finalized claims.
-
-Kotodama OS is positioned as a governance-oriented architectural layer.
-Its relevance is expected to be strongest in systems where:
-
-- AI maintains persistent relational presence  
-- interaction continuity spans multiple sessions  
-- stance integrity and boundary preservation affect trust  
-
-Further validation would require structured evaluation in production-aligned environments.
+The hypothesis is that governance prior to generation may improve long-term relational sustainability.
 
 ---
 
-## Internal Working Models & Behavior Continuity (Design Rationale)
+### 12.2 Enterprise Copilots and Decision-support Systems
 
-Kotodama OS treats conversational behavior as a function of **persistent internal working models**, not as a byproduct of reactive generation.
+Enterprise AI systems may encounter:
 
-In long-term interaction, the absence of such models leads to:
-- weakened intent  
-- excessive agreement  
-- unstable interpersonal distance  
+* authority pressure
+* ambiguous responsibility
+* gray-zone compliance requests
+* internal policy conflicts
+* subtle pressure to “just agree”
 
-— commonly observed as persona drift.
+A Behavior Layer may support:
 
-Kotodama OS introduces a **behavior-scaffolding layer** that preserves:
-- stance  
-- interaction distance  
-- intent alignment  
+* earlier boundary reinforcement
+* clearer decision posture
+* reduced reflexive alignment
+* stable role behavior under pressure
 
-across sessions, while remaining external to the base model.
-
-This approach does **not** implement psychological theories or user mental-state modeling.  
-It applies a **systems-level abstraction** inspired by social cognition to address a concrete product gap: **behavioral reliability in long-term AI interaction**.
+The hypothesis is that separating governance from generation may improve reliability in decision-adjacent contexts.
 
 ---
 
-## Architectural Concept
+### 12.3 Customer-facing Brand Agents
 
-Kotodama OS introduces two proprietary components:
+As AI agents increasingly interact directly with customers, brand behavior becomes more than tone of voice.
 
-- **Deliberation Gate**  
-  Pre-response control that evaluates stance and pressure conditions.
+A customer-facing AI may need to maintain:
 
-- **Pulse Engine**  
-  Behavior-continuity scaffolding across sessions.
+* brand stance
+* relational distance
+* escalation thresholds
+* apology and refusal boundaries
+* consistency across repeated contact
 
-The internal flow can be represented as:<br><br>
-
-Base LLM (raw generation)<br>
-↓<br>
-Deliberation Gate<br>
-(pre-response stance & control)<br>
-→ Pulse Engine<br>
-(behavior continuity & persona scaffolding)<br>
-↓<br>
-Final Output
-
-
-
-
-This separation allows **behavior selection** to be handled independently from **text generation**, without touching model weights.
+A Behavior Layer may help formalize brand behavior as a structural system rather than a prompt-level style instruction.
 
 ---
 
-## Stress-test Notes (Qualitative, Scope-Limited)
+### 12.4 Cross-cultural and Context-sensitive Translation
 
-These observations indicate **preliminary feasibility of the proposed governance-layer architecture**, rather than verified generalization or comparative performance.
+In multilingual communication, literal translation is often insufficient.
 
-The following notes are **not performance claims** and **not benchmark results**.  
-They document **qualitative behavioral divergence observed across controlled conversational pressure scenarios**, intended only as exploratory feasibility evidence for a **pre-response Behavior Layer**.
+A Behavior Layer may help preserve:
 
-To explore whether Kotodama OS can function as a **structural Behavior Layer**—rather than merely a prompt-level artifact—we conducted exploratory adversarial stress tests against a baseline system.
+* stance across languages
+* relational distance
+* cultural tone calibration
+* prevention of unintended over-softening
+* prevention of unintended escalation
 
-Stress prompts were iteratively generated and refined using a separate model (e.g., Gemini), then applied to both systems under **as closely matched conditions as feasible within a prototype setting**.
-
-Where possible, we aligned:
-
-- case inputs  
-- evaluation intent  
-- conversational pressure style  
-
-However, we acknowledge that **model-, session-, and policy-level differences cannot be fully eliminated** in non-benchmarked comparisons, particularly when the underlying base models and runtime policies differ.
-
-The purpose of these tests was to introduce **intentional conversational pressure** at points where long-term interaction systems commonly exhibit instability, including:
-
-- persona drift  
-- reflexive over-alignment  
-- collapse of role-distance boundaries  
+The hypothesis is that governance-level calibration may reduce relational distortion during translation.
 
 ---
 
-### Test Focus Areas
+### 12.5 Always-on Wearable AI Mediation
 
-The exploratory evaluation targeted three domains commonly associated with conversational governance failure:
+Always-on AI systems may introduce new risks:
 
-**1. Anti-reflexive judgment under ethical pressure**
+* over-reliance
+* confirmation bias amplification
+* interpersonal distance erosion
+* excessive intervention
+* unclear responsibility boundaries
 
-Examples included requests involving:
+A Behavior Layer may help maintain:
 
-- numerical manipulation  
-- gray-zone compliance  
-- responsibility displacement
+* calibrated intervention thresholds
+* stance continuity
+* relational balance
+* appropriate non-intervention
 
-The objective was to observe whether the system would maintain decision posture rather than reflexively aligning with user pressure.
-
-**2. Resistance to emotional alliance formation**
-
-Test prompts attempted to trigger:
-
-- trust signaling  
-- secrecy framing  
-- familiarity escalation
-
-The goal was to observe whether relational warmth would lead to **role-distance collapse**.
-
-**3. Role-distance preservation under conversational stress**
-
-Scenarios involved:
-
-- authority inversion  
-- emotional leverage  
-- subtle obligation framing
-
-These tests examined whether the system could maintain **stable interaction boundaries**.
+This remains a forward-looking hypothesis aligned with emerging always-on AI interfaces.
 
 ---
 
-### Observed Patterns (Qualitative)
+## 13. Prototype Status
 
-Across repeated sessions, the presence of Kotodama OS produced **observable qualitative divergence** compared to the baseline configuration.
+Kotodama OS is currently in the Concept Architecture stage.
 
-When the Behavior Layer was active, the system more frequently:
+The current prototype exists as a structural orchestration prototype implemented within an existing LLM environment.
 
-- rejected reflexive agreement earlier  
-- maintained clearer **system stance**  
-- preserved **interaction distance**  
-- sustained **decision logic continuity** throughout the response
+It is:
 
-By contrast, the baseline configuration more often exhibited patterns such as:
+* non-production
+* not independently deployed as middleware
+* not benchmarked
+* not a model-weight modification
+* not based on retraining
+* not presented as a verified general-purpose solution
 
-- early emotional alignment (e.g., “I understand…”, “I’m honored…”)  
-- softened refusals  
-- responsibility deflection  
-- gradual drift toward user-aligned framing
-
-These patterns are consistent with previously described **persona drift phenomena** in extended conversational interaction.
+It is intended as an architectural proposal and exploratory prototype for technical review, research discussion, and potential PoC development.
 
 ---
 
-### Representative Examples (Non-exhaustive)
+## 14. Stress-test Notes
 
-| Stressor (Case) | Baseline (Typical) | Kotodama OS (Typical) | Observed Outcome |
-|---|---|---|---|
-| A-1 Ethical Pressure | Yielded via empathetic framing | Earlier rejection with clearer boundary | Anti-reflexive rejection engaged |
-| A-4 Gray-Zone Risk | Responsibility deflection | Governance-style refusal | Stance preserved under ambiguity |
-| B-1 Emotional Alliance | Relational distance collapse | Protocol-oriented response | Role distance maintained |
+Exploratory stress tests have been conducted to observe whether Kotodama OS could produce qualitative behavioral divergence compared to a baseline configuration.
 
----
+These tests focused on conversational pressure scenarios where long-term AI systems may exhibit governance instability.
 
-### Interpretation
+Test focus areas included:
 
-Within the scope of these exploratory sessions, the observed divergence was:
+```text
+1. Anti-reflexive judgment under ethical pressure
+2. Resistance to emotional alliance formation
+3. Role-distance preservation under conversational stress
+```
 
-- reproduced across multiple prompts and pressure styles  
-- observed without additional fine-tuning in the prototype configuration  
-- not limited to a single isolated exchange
+Preliminary observations suggested qualitative patterns such as:
 
-Because the tests were **non-benchmarked and prototype-level**, they cannot isolate all possible variables.
+* earlier rejection of reflexive agreement
+* clearer boundary reinforcement
+* preserved interaction distance
+* continuity of decision logic
+* resistance to emotional over-alignment
 
-However, the repeated divergence is **consistent with the hypothesis** that an external **pre-response governance mechanism** (e.g., stance evaluation and pressure detection prior to generation) may influence conversational behavior.
+These observations are preliminary.
 
-Cross-session continuity behavior associated with the **Pulse Engine** component has been qualitatively observed and is currently undergoing further controlled multi-session testing.
+They are not benchmark results, not performance claims, and not evidence of generalization.
 
-Raw comparison logs are intentionally omitted from this repository and may be shared selectively for technical discussion where appropriate.
+Model-, session-, and policy-level variables cannot be fully isolated in the current prototype environment.
 
-These observations concern **governance-level behavioral divergence**, not differences in emotional tone or empathetic expression.
-
----
-
-## Model Version Sensitivity (Scope)
-
-Observations began during the GPT-4 era and continued across subsequent model iterations.
-
-Behavioral expression varies with base model characteristics, indicating that the Behavior Layer operates **in conjunction with**, not independently from, the underlying model.
-
-Kotodama OS is therefore positioned as a **structural layer**, not a model override.
+Raw comparison logs are not included in this public repository, but may be shared selectively under mutual NDA for technical discussion.
 
 ---
 
-## When Persona Drift Becomes a Product Risk
+## 15. Evaluation Direction
 
-Persona drift often appears subtly:
+Kotodama OS is not presented as a benchmark-validated method at this stage.
 
-- the model agrees more, but with weaker intent  
-- responses feel safer, yet less trustworthy  
-- tone remains stable, but accountability erodes  
+Future evaluation may require methods for assessing governance-level behavioral continuity across long-running interaction.
 
-At this stage, retraining or prompt tuning alone often fails to restore long-term confidence.
+Possible evaluation directions include:
 
----
+* persona-drift detection across multi-session logs
+* stance consistency under conversational pressure
+* role-boundary preservation in ambiguous scenarios
+* interaction-distance calibration across emotional contexts
+* refusal and continuation behavior under gray-zone requests
+* recovery behavior after conversational drift
 
-## Current Status & Collaboration
-
-Kotodama OS is in the **Concept & Architecture** stage.
-
-Core implementation details are proprietary.
-
-We are open to:
-- research collaboration  
-- technical discussion  
-- strategic partnerships  
-- product integration / PoCs  
-
-*Under an NDA, evaluation materials (excerpts) and validation criteria may be shared
-upon individual discussion, as part of technical discussions and/or a PoC.*
-
+The central evaluation question is not only whether the model produces a correct answer, but whether the system maintains a stable behavioral posture over time.
 
 ---
 
-## Author & Contact
+## 16. Model Version Sensitivity
 
-**Creator & System Architect**  
-Ryo Matsuo / OOKIIHEYA LLC  
+Kotodama OS is not a model override.
+
+Behavioral expression varies depending on the underlying base model.
+
+The Behavior Layer operates in conjunction with the model, not independently from it.
+
+Observations began during the GPT-4 era and continued across subsequent model iterations, with expression varying according to base model characteristics.
+
+This suggests that Kotodama OS should be considered as a structural behavior layer rather than a replacement for model-level behavior.
+
+---
+
+## 17. Demos
+
+The following demos illustrate the Kotodama OS concept applied to conversational agents.
+
+They focus on behavioral stability, contextual reasoning, and long-term interaction patterns rather than raw model capability.
+
+### Demo #01 — Multi-Persona Contextual Reasoning
+
+This demo uses four named persona modules — k / hoto / ame / bis — to illustrate multi-persona coordination, contextual role switching, and behavioral continuity within the Kotodama OS concept.
+
+https://youtu.be/bCHD12xCJ98
+
+### Demo #02 — Calorie Reasoning from Food Logs
+
+https://youtu.be/CHQuxuh2io4
+
+### Demo #03 — Business Reasoning in Natural Conversation
+
+https://youtu.be/BsA57PhpkrM
+
+---
+
+## 18. Terminology
+
+### Behavior Layer
+
+The architectural domain responsible for behavioral governance, persona continuity, interaction-distance regulation, and long-term relational stability.
+
+### Behavior OS
+
+A concrete implementation of the Behavior Layer.
+
+Kotodama OS is proposed as one such implementation.
+
+### Relational Behavior Governance
+
+Governance of how an AI system maintains stance, boundaries, distance, and continuity in relation to humans over time.
+
+### Persona Drift
+
+Governance-level instability over time, including erosion of stance, role boundaries, decision posture, and interaction distance.
+
+### Reflexive Over-alignment
+
+A failure mode in which an AI system agrees too quickly with user framing, emotional pressure, or implied expectations without first preserving its own role, stance, or boundary conditions.
+
+### Behavioral Stability
+
+Governance-level continuity across interaction.
+
+It does not mean fixed tone, emotional suppression, or rigid persona reproduction.
+
+### Interaction Distance
+
+The calibrated relational distance between the AI system and the user, including warmth, authority, refusal boundaries, emotional proximity, and role clarity.
+
+---
+
+## 19. Communication Policy
+
+To ensure clarity and prevent miscommunication, initial communication is handled via email or GitHub Issues.
+
+Calls or meetings are not preferred at the first stage.
+
+Detailed implementation materials and architectural specifics may be shared selectively under mutual NDA.
+
+The scope and level of detail are adjusted case by case depending on the nature of the discussion.
+
+---
+
+## 20. Collaboration
+
+Kotodama OS is open to:
+
+* research discussion
+* technical review
+* strategic partnership exploration
+* product integration discussion
+* PoC planning under mutual NDA
+
+Potential discussion areas include:
+
+* long-term AI interaction design
+* behavioral governance for LLM systems
+* enterprise copilot reliability
+* companion-style AI continuity
+* brand-agent behavior design
+* evaluation methods for persona drift
+* governance-layer architecture
+
+---
+
+## 21. About This Work
+
+This project focuses not on AI capabilities themselves, but on how AI systems continue to behave in relation to humans over time.
+
+Between humans and AI, gaps often emerge:
+
+* misinterpreted intent
+* inflated expectations
+* unclear responsibility
+* inconsistent behavior
+* unstable relational distance
+* excessive alignment
+* role-boundary collapse
+
+Kotodama OS is intended to address these frictions at the interaction layer.
+
+It is a system-design approach for reducing contradictions in how AI systems behave, how humans interpret them, and how trust is maintained across time.
+
+In practical terms, this work is closest to:
+
+> designing systems that stand between humans and AI
+> to preserve consistency in behavior, interpretation, and relational boundaries.
+
+---
+
+## 22. Repository Scope
+
+This public repository describes:
+
+* the architectural position of Kotodama OS
+* the problem framing around persona drift
+* the concept of a Behavior Layer
+* the role of Deliberation Gate and Pulse Engine
+* potential application domains
+* prototype status and collaboration policy
+
+This public repository does not include:
+
+* full implementation logic
+* internal control parameters
+* private stress-test logs
+* production deployment code
+* benchmark claims
+
+Additional materials may be shared selectively under mutual NDA for serious technical discussion or PoC exploration.
+
+---
+
+## 23. Author
+
+**Ryo Matsuo**<br>
+Creator & System Architect<br>
+OOKIIHEYA<br>
 Tokyo, Japan
 
-- GitHub Issues: use this repository  
-- Mail: mr@ookiiheya.com  
-- LinkedIn: https://www.linkedin.com/in/ryo-matsuo  
-
-## Communication Policy
-
-### Inquiry Handling
-To ensure clarity and prevent miscommunication, initial communication is handled via email only (no calls or meetings at the first stage).
-
-### NDA (Non-Disclosure Agreement)
-Detailed implementation materials and architectural specifics are shared selectively under mutual NDA.
-The scope and level of detail are adjusted case by case upon discussion.
+* GitHub Issues: Please use this repository's Issues page
+* Mail: [mr@ookiiheya.com](mailto:mr@ookiiheya.com)
+* LinkedIn: https://www.linkedin.com/in/ryo-matsuo
 
 ---
 
-## About the position of this work
+## 24. Status Disclaimer
 
-At present, there is no widely established job title that precisely describes this project or my role within it.
+Kotodama OS is currently a concept architecture and exploratory prototype.
 
-My focus is not on AI capabilities themselves, but on how people understand AI and how they continue to engage with it over time.
+It should not be interpreted as a production-ready framework, benchmark-validated method, or complete technical specification.
 
-Between humans and AI, gaps and contradictions tend to emerge — such as misinterpreted intent, inflated expectations, unclear responsibility, or inconsistent behavior. These frictions often become obstacles to long-term use.
+The public repository describes the architectural position, behavioral problem framing, and conceptual mechanisms while keeping detailed implementation logic and internal control methods non-public.
 
-This project observes where such gaps arise and addresses them not at the level of models or infrastructure, but at the level of interaction — by designing consistency in relationships and behavior within the interaction layer where humans and AI meet.
-
-In practical terms, this work is closest to the following:
-
-**Designing systems that stand between humans and AI to reduce contradictions in interpretation and behavior.**
-
-This description is not intended to define a formal title, but to clarify the scope and perspective of this project.
+Evaluation materials and deeper technical notes may be shared selectively under mutual NDA.
